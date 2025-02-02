@@ -40,7 +40,17 @@ nav a {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 1.5rem;
+  padding: 1rem;
+}
+
+.historias-destaque {
+  background: #f8f9fa;
   padding: 2rem;
+  margin: 2rem auto;
+  max-width: 1000px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .card-historia {
@@ -49,14 +59,39 @@ nav a {
   padding: 1rem;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .card-historia img {
-  width: 100%; /* Largura máxima */
-  max-width: 600px; /* Tamanho máximo */
-  height: auto; /* Mantém a proporção */
-  object-fit: fit;
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
   border-radius: 8px;
+}
+
+.card-historia h3 {
+  margin: 1rem 0;
+}
+
+.card-historia p {
+  margin-bottom: 1.5rem;
+  flex-grow: 1;
+}
+
+.botao-leia {
+  background: #3498db;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.botao-leia:hover {
+  background: #2980b9;
 }
 
 /* Botões */
@@ -73,27 +108,19 @@ nav a {
 
 /* Mensagem de erro */
 .erro {
-    color: #dc3545;
-    font-weight: bold;
+  color: #dc3545;
+  font-weight: bold;
 }
 
 /* Botão de tentar novamente */
 button {
-    background: #28a745;
-    color: white;
-    border: none;
-    padding: 0.5rem 1rem;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-top: 0.5rem;
-}
-
-/* Responsividade */
-@media (max-width: 768px) {
-  .versiculo-do-dia {
-    margin: 1rem;
-    padding: 1rem;
-  }
+  background: #28a745;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 0.5rem;
 }
 
 /* Estilos para historias.html */
@@ -107,6 +134,21 @@ button {
   display: flex;
   justify-content: center; /* Centraliza horizontalmente */
   margin: 1rem 0; /* Espaçamento acima e abaixo */
+  height: 200px; /* Altura fixa para todas as imagens */
+  overflow: hidden; /* Esconde partes excedentes */
+  border-radius: 8px;
+}
+
+.imagem-historia {
+  display: flex;
+  justify-content: center; /* Centraliza horizontalmente */
+  margin: 1rem 0; /* Espaçamento acima e abaixo */
+}
+
+.imagem-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Mantém a proporção sem distorcer */
 }
 
 .historia {
@@ -194,4 +236,195 @@ button {
   100% {
     transform: scale(1);
   }
+}
+
+/* Jogo Diário */
+.jogo-diario {
+  background: #fff3e0;
+  padding: 2rem;
+  margin: 2rem auto;
+  max-width: 800px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.quiz-rapido button {
+  margin: 0.5rem;
+  background: #4caf50;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.quiz-rapido button:hover {
+  background: #45a049;
+}
+
+#resultado-jogo {
+  margin-top: 1rem;
+  font-weight: bold;
+}
+
+/* Seção Colorir */
+.colorir {
+  background: #f8f9fa;
+  padding: 2rem;
+  margin: 2rem auto;
+  max-width: 1000px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.grid-desenhos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  padding: 1rem;
+}
+
+.card-desenho {
+  background: white;
+  border-radius: 10px;
+  padding: 1rem;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.card-desenho img {
+  width: 60%;
+  height: 60%;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.botao-download {
+  background: #ff9800;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  text-decoration: none;
+  margin-top: 1rem;
+  transition: background 0.3s;
+}
+
+.botao-download:hover {
+  background: #e68900;
+}
+
+/* Curiosidades */
+.curiosidades {
+  background: #f8f9fa;
+  padding: 2rem;
+  margin: 2rem auto;
+  max-width: 800px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.card-curiosidade {
+  background: white;
+  padding: 1.5rem;
+  margin: 1rem 0;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  text-align: left;
+}
+
+.card-curiosidade p {
+  margin: 0;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+/* Vídeo */
+/* Estilos para o vídeo */
+.video-destaque {
+  padding: 1rem 0;
+  margin: 1rem 0;
+}
+
+.video-container {
+  width: 90%; /* Largura relativa */
+  max-width: 800px; /* Largura máxima */
+  margin: 20px auto; /* Centraliza horizontalmente */
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.video-container iframe {
+  width: 100%;
+  height: 450px; /* Altura fixa (ajuste conforme necessário) */
+  border: none;
+}
+
+/* Responsivo para dispositivos menores */
+@media (max-width: 768px) {
+  .versiculo-do-dia,
+  .jogo-diario,
+  .colorir,
+  .curiosidades,
+  .oracao-do-dia,
+  .historias-destaque {
+    margin: 1rem;
+    padding: 1rem;
+  }
+
+  .grid-historias,
+  .grid-desenhos {
+    grid-template-columns: 1fr;
+  }
+  .video-container {
+    width: 95%; /* Aumenta a largura relativa em telas pequenas */
+  }
+
+  .video-container iframe {
+    height: 250px; /* Altura menor para mobile */
+  }
+}
+
+.video-destaque h2 {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+/* Oração do Dia */
+.oracao-do-dia {
+  background: #f8f9fa;
+  padding: 2rem;
+  margin: 2rem auto;
+  max-width: 800px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+#texto-oracao {
+  font-size: 1.2rem;
+  margin: 1.5rem 0;
+  color: #2c3e50;
+  line-height: 1.6;
+}
+
+.botao-gerar {
+  background: #3498db;
+  color: white;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.botao-gerar:hover {
+  background: #2980b9;
 }

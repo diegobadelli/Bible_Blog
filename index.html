@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,10 +8,11 @@
     <title>Palavra do Dia & Histórias Bíblicas</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
     <!-- Cabeçalho -->
     <header>
-        <h1>📖 Blog da Bíblia para Crianças</h1>
+        <h1>📖 Bíblia para Crianças</h1>
         <nav>
             <a href="index.html">Home</a>
             <a href="historias.html">Histórias</a>
@@ -60,6 +62,54 @@
         </div>
     </section>
 
+    <section class="jogo-diario">
+        <h2>🎮 Jogo Bíblico</h2>
+        <div class="quiz-rapido">
+            <p id="pergunta-jogo">Qual personagem construiu uma arca?</p>
+            <button onclick="verificarRespostaJogo('noe')">Noé</button>
+            <button onclick="verificarRespostaJogo('davi')">Davi</button>
+            <p id="resultado-jogo" class="resultado-quiz"></p>
+        </div>
+    </section>
+
+    <section class="colorir">
+        <h2>🎨 Vamos Colorir!</h2>
+        <div class="grid-desenhos">
+            <div class="card-desenho">
+                <img src="assets/images/reis-magos.jpg" alt="O encontro dos Reis Magos para colorir">
+                <a href="assets/downloads/reis-magos.pdf" download class="botao-download">Baixar</a>
+            </div>
+            <!-- Adicione mais desenhos -->
+        </div>
+    </section>
+
+    <section class="curiosidades">
+        <h2>🔍 Sabia Que...?</h2>
+        <div class="card-curiosidade">
+            <p>O menor versículo da Bíblia é <strong>"Jesus chorou."</strong> (João 11:35)</p>
+        </div>
+        <div class="card-curiosidade">
+            <p>O livro de Salmos é o maior da Bíblia, com 150 capítulos!</p>
+        </div>
+    </section>
+
+    <section class="video-destaque">
+        <h2>📺 Vídeo da Semana</h2>
+        <div class="video-container">
+            <iframe src="https://www.youtube.com/embed/s1ldFjCZx5w?si=00qBCST3L7UQyL_S"
+                title="Filme animação David/ Para crianças Em HD Dublado- Angel Studio"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+            </iframe>
+        </div>
+    </section>
+
+    <section class="oracao-do-dia">
+        <h2>🙏 Oração do Dia</h2>
+        <div id="texto-oracao">Carregando oração...</div>
+        <button class="botao-gerar" onclick="gerarOracao()">Nova Oração</button>
+    </section>
+
     <!-- Rodapé -->
     <footer>
         <p>© 2024 Blog da Bíblia para Crianças. Todos os direitos reservados.</p>
@@ -67,4 +117,5 @@
 
     <script src="js/script.js"></script>
 </body>
+
 </html>
