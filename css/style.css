@@ -1,0 +1,197 @@
+/* Reset Básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Arial", sans-serif;
+}
+
+/* Cabeçalho */
+header {
+  background: #2c3e50;
+  color: white;
+  padding: 1rem;
+  text-align: center;
+}
+
+nav {
+  margin-top: 1rem;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  margin: 0 1rem;
+}
+
+/* Versículo do Dia */
+.versiculo-do-dia {
+  background: #f8f9fa;
+  padding: 2rem;
+  text-align: center;
+  margin: 2rem auto;
+  max-width: 800px;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Cards de Histórias */
+.grid-historias {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  padding: 2rem;
+}
+
+.card-historia {
+  background: white;
+  border-radius: 10px;
+  padding: 1rem;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.card-historia img {
+  width: 100%; /* Largura máxima */
+  max-width: 600px; /* Tamanho máximo */
+  height: auto; /* Mantém a proporção */
+  object-fit: fit;
+  border-radius: 8px;
+}
+
+/* Botões */
+.botao-compartilhar,
+.botao-leia {
+  background: #3498db;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 1rem;
+}
+
+/* Mensagem de erro */
+.erro {
+    color: #dc3545;
+    font-weight: bold;
+}
+
+/* Botão de tentar novamente */
+button {
+    background: #28a745;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 0.5rem;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .versiculo-do-dia {
+    margin: 1rem;
+    padding: 1rem;
+  }
+}
+
+/* Estilos para historias.html */
+.container-historias {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.imagem-container {
+  display: flex;
+  justify-content: center; /* Centraliza horizontalmente */
+  margin: 1rem 0; /* Espaçamento acima e abaixo */
+}
+
+.historia {
+  background: white;
+  border-radius: 15px;
+  padding: 2rem;
+  margin: 2rem 0;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+.historia-imagem {
+  width: 100%; /* Largura máxima */
+  max-width: 600px; /* Tamanho máximo */
+  height: auto; /* Mantém a proporção */
+  border-radius: 10px; /* Bordas arredondadas */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra suave */
+  margin: 1rem 0;
+}
+
+.destaque {
+  background: #f0f8ff;
+  padding: 1rem;
+  border-left: 4px solid #3498db;
+  margin: 1rem 0;
+}
+
+.quiz {
+  background: #fff9e6;
+  padding: 1.5rem;
+  border-radius: 10px;
+  margin: 1.5rem 0;
+}
+
+.quiz button {
+  margin: 0.5rem;
+  padding: 0.5rem 1rem;
+}
+
+.resultado-quiz {
+  font-weight: bold;
+  margin-top: 1rem;
+}
+
+.personagens {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+.personagem {
+  padding: 1rem;
+  border-radius: 8px;
+  text-align: center;
+}
+
+/* Efeitos Especiais */
+.arco-iris {
+  background: linear-gradient(
+    45deg,
+    #ff0000,
+    #ff8000,
+    #ffff00,
+    #00ff00,
+    #00ffff,
+    #0000ff,
+    #8000ff
+  );
+  -webkit-background-clip: text;
+  color: transparent;
+  font-weight: bold;
+}
+
+.efeito-sonoro {
+  animation: pulsar 1s infinite;
+}
+
+@keyframes pulsar {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Histórias Bíblicas - Blog da Bíblia para Crianças</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <!-- Cabeçalho -->
+    <header>
+        <h1>📖 Histórias Bíblicas</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="historias.html">Histórias</a>
+            <a href="blog.html">Blog</a>
+        </nav>
+    </header>
+
+    <!-- Container Principal -->
+    <main class="container-historias">
+
+        <!-- História 1: Arca de Noé -->
+        <section class="historia" id="arca-de-noe">
+            <h2>🌈 A Arca da Amizade</h2>
+            <div class="imagem-container">
+                <img src="assets/images/arca-de-noe.jpg" alt="Noé e os animais na arca" class="historia-imagem">
+            </div>
+            <div class="historia-texto">
+                <p>Noé era um homem bondoso que amava a Deus. Um dia, Deus lhe disse:</p>
+                <p class="destaque">"Construa uma arca enorme e chame um casal de cada animal!"</p>
+
+                <p>Todos riram de Noé, mas ele obedeceu. Na arca entraram:</p>
+                <ul class="lista-animais">
+                    <li>🦁 Leões rugindo</li>
+                    <li>🐘 Elefantes trombetando</li>
+                    <li>🦜 Araras coloridas</li>
+                </ul>
+
+                <p>Choveu por 40 dias, mas todos ficaram seguros. No final, apareceu um lindo <span
+                        class="arco-iris">arco-íris</span> no céu!</p>
+            </div>
+
+            <!-- Quiz -->
+            <div class="quiz">
+                <h3>Você prestou atenção?</h3>
+                <p>Quantos dias choveu durante o dilúvio?</p>
+                <button onclick="verificarResposta(1, 1)">7 dias</button>
+                <button onclick="verificarResposta(1, 2)">40 dias</button>
+                <p id="resultado-1" class="resultado-quiz"></p>
+            </div>
+
+            <button class="botao-compartilhar" onclick="compartilharHistoria('A Arca da Amizade')">Compartilhar</button>
+        </section>
+
+        <!-- História 2: Davi e Golias -->
+        <section class="historia" id="davi-golias">
+            <h2>🎯 O Herói Pequenino</h2>
+            <div class="imagem-container">
+                <img src="assets/images/davi-golias.jpg" alt="Davi enfrentando Golias" class="historia-imagem">
+            </div>
+            <div class="historia-texto">
+                <p>O gigante Golias assustava todo mundo com seu tamanho e vozão:</p>
+                <p class="destaque">"TRAZENHEM UM HOMEM PARA LUTAR COMIGO!"</p>
+
+                <p>Davi, um jovem pastor, pegou sua funda e disse:</p>
+                <p>"Você vem com espada, mas eu venho em nome de Deus!"</p>
+
+                <p class="efeito-sonoro">Zummmm! 🪨 A pedra acertou a testa de Golias!</p>
+                <p>Todos comemoraram a vitória da coragem sobre o medo!</p>
+            </div>
+
+            <!-- Quiz -->
+            <div class="quiz">
+                <h3>Teste Seu Conhecimento</h3>
+                <p>Qual arma Davi usou para vencer Golias?</p>
+                <button onclick="verificarResposta(2, 1)">Espada</button>
+                <button onclick="verificarResposta(2, 2)">Funda</button>
+                <p id="resultado-2" class="resultado-quiz"></p>
+            </div>
+
+            <button class="botao-compartilhar" onclick="compartilharHistoria('O Herói Pequenino')">Compartilhar</button>
+        </section>
+
+        <!-- História 3: Bom Samaritano -->
+        <section class="historia" id="bom-samaritano">
+            <h2>❤️ O Viajante Bondoso</h2>
+            <div class="imagem-container">
+            <img src="assets/images/samaritano.jpg" alt="Bom Samaritano ajudando" class="historia-imagem">
+            </div>
+            <div class="historia-texto">
+                <p>Um homem foi atacado por ladrões e ficou ferido na estrada. Quem ajudou?</p>
+
+                <div class="personagens">
+                    <div class="personagem">
+                        <p>👨🏼💼 Sacerdote</p>
+                        <p>❌ Passou direto</p>
+                    </div>
+                    <div class="personagem">
+                        <p>👨🏽🦱 Samaritano</p>
+                        <p>✅ Cuidou das feridas</p>
+                    </div>
+                </div>
+
+                <p class="destaque">"Ame seu próximo como a si mesmo" - Jesus</p>
+            </div>
+
+            <!-- Quiz -->
+            <div class="quiz">
+                <h3>Você Sabia?</h3>
+                <p>Quantas pessoas ajudaram o homem ferido?</p>
+                <button onclick="verificarResposta(3, 1)">1 pessoa</button>
+                <button onclick="verificarResposta(3, 2)">3 pessoas</button>
+                <p id="resultado-3" class="resultado-quiz"></p>
+            </div>
+
+            <button class="botao-compartilhar"
+                onclick="compartilharHistoria('O Viajante Bondoso')">Compartilhar</button>
+        </section>
+
+        <!-- Seção de Comentários -->
+        <div class="comentarios">
+            <h2>💬 Conte o que achou!</h2>
+            <div id="disqus_thread"></div>
+        </div>
+    </main>
+
+    <!-- Rodapé -->
+    <footer>
+        <p>© 2024 Blog da Bíblia para Crianças. Todos os direitos reservados.</p>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/script.js"></script>
+    <!-- Disqus -->
+    <script>
+        (function () {
+            var d = document, s = d.createElement('script');
+            s.src = 'https://SEU_SITE.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+    </script>
+</body>
+
+</html>
