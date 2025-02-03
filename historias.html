@@ -8,10 +8,10 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 
-<body>
+<body class="pagina-historias">
     <!-- Cabeçalho -->
     <header>
-        <h1>📖 Histórias Bíblicas</h1>
+        <h1>📖 Todas as Histórias Bíblicas</h1>
         <nav>
             <a href="index.html">Home</a>
             <a href="historias.html">Histórias</a>
@@ -19,110 +19,541 @@
         </nav>
     </header>
 
-    <!-- Container Principal -->
     <main class="container-historias">
-
-        <!-- História 1: Arca de Noé -->
-        <section class="historia" id="arca-de-noe">
-            <h2>🌈 A Arca da Amizade</h2>
+        <!-- História 1 -->
+        <section class="historia" id="criacao-mundo">
+            <h2>1. 🌍 A Criação do Mundo</h2>
             <div class="imagem-historia">
-                <img src="assets/images/arca-de-noe.jpg" alt="Noé e os animais na arca" class="historia-imagem">
+                <img src="assets/images/criacao.jpg" alt="Deus criando o mundo" class="historia-imagem">
             </div>
             <div class="historia-texto">
-                <p>Noé era um homem bondoso que amava a Deus. Um dia, Deus lhe disse:</p>
-                <p class="destaque">"Construa uma arca enorme e chame um casal de cada animal!"</p>
-
-                <p>Todos riram de Noé, mas ele obedeceu. Na arca entraram:</p>
-                <ul class="lista-animais">
-                    <li>🦁 Leões rugindo</li>
-                    <li>🐘 Elefantes trombetando</li>
-                    <li>🦜 Araras coloridas</li>
+                <p class="destaque">"No princípio, Deus criou os céus e a terra." (Gênesis 1:1)</p>
+                <p>Em seis dias, Deus criou:</p>
+                <ul class="lista-criacao">
+                    <li>🌞 Dia 1: Luz e trevas</li>
+                    <li>🌌 Dia 2: Céu e mar</li>
+                    <li>🌿 Dia 3: Plantas e árvores</li>
+                    <li>✨ Dia 4: Sol, lua e estrelas</li>
+                    <li>🐠 Dia 5: Peixes e pássaros</li>
+                    <li>🦁 Dia 6: Animais e humanos</li>
                 </ul>
-
-                <p>Choveu por 40 dias, mas todos ficaram seguros. No final, apareceu um lindo <span
-                        class="arco-iris">arco-íris</span> no céu!</p>
+                <p class="arco-iris">No 7º dia, Deus descansou e abençoou sua criação!</p>
             </div>
-
-            <!-- Quiz -->
             <div class="quiz">
-                <h3>Você prestou atenção?</h3>
-                <p>Quantos dias choveu durante o dilúvio?</p>
-                <button onclick="verificarResposta(1, 1)">7 dias</button>
-                <button onclick="verificarResposta(1, 2)">40 dias</button>
+                <h3>Você é expert em criação?</h3>
+                <p>O que Deus criou no terceiro dia?</p>
+                <button onclick="verificarResposta(1, 1)">Plantas</button>
+                <button onclick="verificarResposta(1, 2)">Estrelas</button>
                 <p id="resultado-1" class="resultado-quiz"></p>
             </div>
-
-            <button class="botao-compartilhar" onclick="compartilharHistoria('A Arca da Amizade')">Compartilhar</button>
+            <button class="botao-compartilhar"
+                onclick="compartilharHistoria('A Criação do Mundo')">Compartilhar</button>
         </section>
 
-        <!-- História 2: Davi e Golias -->
+        <!-- História 2 -->
         <section class="historia" id="davi-golias">
-            <h2>🎯 O Herói Pequenino</h2>
+            <h2>2. 🦸♂️ Davi e Golias</h2>
             <div class="imagem-historia">
                 <img src="assets/images/davi-golias.jpg" alt="Davi enfrentando Golias" class="historia-imagem">
             </div>
             <div class="historia-texto">
-                <p>O gigante Golias assustava todo mundo com seu tamanho e vozão:</p>
-                <p class="destaque">"TRAZENHEM UM HOMEM PARA LUTAR COMIGO!"</p>
-
-                <p>Davi, um jovem pastor, pegou sua funda e disse:</p>
-                <p>"Você vem com espada, mas eu venho em nome de Deus!"</p>
-
-                <p class="efeito-sonoro">Zummmm! 🪨 A pedra acertou a testa de Golias!</p>
-                <p>Todos comemoraram a vitória da coragem sobre o medo!</p>
-            </div>
-
-            <!-- Quiz -->
-            <div class="quiz">
-                <h3>Teste Seu Conhecimento</h3>
-                <p>Qual arma Davi usou para vencer Golias?</p>
-                <button onclick="verificarResposta(2, 1)">Espada</button>
-                <button onclick="verificarResposta(2, 2)">Funda</button>
-                <p id="resultado-2" class="resultado-quiz"></p>
-            </div>
-
-            <button class="botao-compartilhar" onclick="compartilharHistoria('O Herói Pequenino')">Compartilhar</button>
-        </section>
-
-        <!-- História 3: Bom Samaritano -->
-        <section class="historia" id="bom-samaritano">
-            <h2>❤️ O Viajante Bondoso</h2>
-            <div class="imagem-historia">
-            <img src="assets/images/samaritano.jpg" alt="Bom Samaritano ajudando" class="historia-imagem">
-            </div>
-            <div class="historia-texto">
-                <p>Um homem foi atacado por ladrões e ficou ferido na estrada. Quem ajudou?</p>
-
+                <p class="destaque">"A batalha é do Senhor!" (1 Samuel 17:47)</p>
+                <p>Davi, um jovem pastor, enfrentou o gigante Golias com apenas:</p>
                 <div class="personagens">
                     <div class="personagem">
-                        <p>👨🏼💼 Sacerdote</p>
-                        <p>❌ Passou direto</p>
-                    </div>
-                    <div class="personagem">
-                        <p>👨🏽🦱 Samaritano</p>
-                        <p>✅ Cuidou das feridas</p>
+                        <p>🪨 Funda</p>
+                        <p>+</p>
+                        <p>5 pedrinhas</p>
                     </div>
                 </div>
-
-                <p class="destaque">"Ame seu próximo como a si mesmo" - Jesus</p>
+                <p class="efeito-sonoro">Com um tiro certeiro, Golias caiu!</p>
             </div>
-
-            <!-- Quiz -->
             <div class="quiz">
-                <h3>Você Sabia?</h3>
-                <p>Quantas pessoas ajudaram o homem ferido?</p>
-                <button onclick="verificarResposta(3, 1)">1 pessoa</button>
-                <button onclick="verificarResposta(3, 2)">3 pessoas</button>
+                <h3>Teste de Coragem</h3>
+                <p>Quantas pedras Davi pegou?</p>
+                <button onclick="verificarResposta(2, 1)">1</button>
+                <button onclick="verificarResposta(2, 2)">5</button>
+                <p id="resultado-2" class="resultado-quiz"></p>
+            </div>
+            <button class="botao-compartilhar" onclick="compartilharHistoria('Davi e Golias')">Compartilhar</button>
+        </section>
+
+        <section class="historia" id="daniel-leoes">
+            <h2>3. 🦁 Daniel e os Leões</h2>
+            <div class="imagem-historia">
+                <img src="assets/images/daniel-leoes.jpg" alt="Daniel na cova dos leões" class="historia-imagem">
+            </div>
+            <div class="historia-texto">
+                <p class="destaque">"O meu Deus enviou o seu anjo e fechou a boca dos leões!" (Daniel 6:22)</p>
+                <p>Daniel era um homem fiel a Deus, mas alguns homens invejosos fizeram o rei criar uma lei que proibia
+                    orar a qualquer deus. Daniel continuou orando e foi jogado na cova dos leões como castigo. Mas Deus
+                    enviou um anjo para protegê-lo!</p>
+                <ul>
+                    <li>🙏 Daniel orava 3 vezes ao dia</li>
+                    <li>🦁 Leões famintos na cova</li>
+                    <li>😇 Anjo fechou a boca dos leões</li>
+                </ul>
+                <p class="efeito-sonoro">No dia seguinte, Daniel saiu ileso! 🎉</p>
+            </div>
+            <div class="quiz">
+                <h3>Você é corajoso como Daniel?</h3>
+                <p>Quantas vezes Daniel orava por dia?</p>
+                <button onclick="verificarResposta(3, 1)">1 vez</button>
+                <button onclick="verificarResposta(3, 2)">3 vezes</button>
                 <p id="resultado-3" class="resultado-quiz"></p>
             </div>
+            <button class="botao-compartilhar" onclick="compartilharHistoria('Daniel e os Leões')">Compartilhar</button>
+        </section>
 
+        <section class="historia" id="bom-samaritano">
+            <h2>4. ❤️ O Bom Samaritano</h2>
+            <div class="imagem-historia">
+                <img src="assets/images/samaritano.jpg" alt="Bom Samaritano ajudando" class="historia-imagem">
+            </div>
+            <div class="historia-texto">
+                <p class="destaque">"Vá e faça o mesmo." (Lucas 10:37)</p>
+                <p>Jesus contou a história de um homem que foi atacado por ladrões e ficou ferido. Um sacerdote e um
+                    levita passaram por ele, mas não ajudaram. Então, um samaritano, que era considerado inimigo, parou
+                    e cuidou dele.</p>
+                <div class="personagens">
+                    <div class="personagem">
+                        <p>👨‍⚕️ Samaritano</p>
+                        <p>✅ Cuidou do homem</p>
+                    </div>
+                    <div class="personagem">
+                        <p>👨‍💼 Sacerdote</p>
+                        <p>❌ Ignorou</p>
+                    </div>
+                </div>
+                <p class="efeito-sonoro">Jesus nos ensinou a amar a todos! 💖</p>
+            </div>
+            <div class="quiz">
+                <h3>Teste de Bondade</h3>
+                <p>Quem ajudou o homem ferido?</p>
+                <button onclick="verificarResposta(4, 1)">Sacerdote</button>
+                <button onclick="verificarResposta(4, 2)">Samaritano</button>
+                <p id="resultado-4" class="resultado-quiz"></p>
+            </div>
+            <button class="botao-compartilhar" onclick="compartilharHistoria('O Bom Samaritano')">Compartilhar</button>
+        </section>
+
+        <section class="historia" id="arca-noe">
+            <h2>5. 🚢 A Grande Arca de Noé</h2>
+            <div class="imagem-historia">
+                <img src="assets/images/arca-noe.jpg" alt="Arca de Noé" class="historia-imagem">
+            </div>
+            <div class="historia-texto">
+                <p class="destaque">"Noé fez tudo exatamente como Deus lhe ordenou." (Gênesis 6:22)</p>
+                <p>Deus pediu a Noé que construísse uma arca gigante para salvar sua família e os animais de um grande
+                    dilúvio. Noé obedeceu, e quando a chuva começou, eles entraram na arca.</p>
+                <ul>
+                    <li>🪵 Arca de madeira</li>
+                    <li>🐘 Um casal de cada animal</li>
+                    <li>🌧️ 40 dias de chuva</li>
+                </ul>
+                <p class="arco-iris">No final, Deus colocou um arco-íris no céu como promessa!</p>
+            </div>
+            <div class="quiz">
+                <h3>Você é expert em arca?</h3>
+                <p>Quantos dias durou o dilúvio?</p>
+                <button onclick="verificarResposta(5, 1)">7 dias</button>
+                <button onclick="verificarResposta(5, 2)">40 dias</button>
+                <p id="resultado-5" class="resultado-quiz"></p>
+            </div>
+            <button class="botao-compartilhar" onclick="compartilharHistoria('A Arca de Noé')">Compartilhar</button>
+        </section>
+
+        <section class="historia" id="nascimento-jesus">
+            <h2>6. 👶 O Nascimento de Jesus</h2>
+            <div class="imagem-historia">
+                <img src="assets/images/nascimento-jesus.jpg" alt="Nascimento de Jesus" class="historia-imagem">
+            </div>
+            <div class="historia-texto">
+                <p class="destaque">"Hoje, na cidade de Davi, lhes nasceu o Salvador!" (Lucas 2:11)</p>
+                <p>Jesus nasceu em Belém, em uma humilde manjedoura. Anjos anunciaram a boa notícia aos pastores, que
+                    foram visitar o bebê.</p>
+                <ul>
+                    <li>🌟 Estrela de Belém</li>
+                    <li>👼 Anjos cantando</li>
+                    <li>🐑 Pastores adorando</li>
+                </ul>
+                <p class="efeito-sonoro">O maior presente de todos! 🎁</p>
+            </div>
+            <div class="quiz">
+                <h3>Teste de Natal</h3>
+                <p>Onde Jesus nasceu?</p>
+                <button onclick="verificarResposta(6, 1)">Jerusalém</button>
+                <button onclick="verificarResposta(6, 2)">Belém</button>
+                <p id="resultado-6" class="resultado-quiz"></p>
+            </div>
             <button class="botao-compartilhar"
-                onclick="compartilharHistoria('O Viajante Bondoso')">Compartilhar</button>
+                onclick="compartilharHistoria('O Nascimento de Jesus')">Compartilhar</button>
+        </section>
+
+        <section class="historia" id="adao-eva">
+            <h2>7. 🍎 A Desobediência de Adão e Eva</h2>
+            <div class="imagem-historia">
+                <img src="assets/images/adao-eva.webp" alt="Adão e Eva no Jardim do Éden" class="historia-imagem">
+            </div>
+            <div class="historia-texto">
+                <p class="destaque">"Não comam do fruto da árvore do conhecimento do bem e do mal." (Gênesis 2:17)</p>
+                <p>Adão e Eva viviam felizes no Jardim do Éden, mas a serpente enganou Eva, e ela comeu do fruto
+                    proibido. Adão também comeu, e por isso tiveram que deixar o jardim.</p>
+                <ul>
+                    <li>🌳 Jardim do Éden</li>
+                    <li>🐍 Serpente enganadora</li>
+                    <li>🚪 Saída do jardim</li>
+                </ul>
+                <p class="efeito-sonoro">Aprendemos que desobedecer a Deus traz consequências! 😔</p>
+            </div>
+            <div class="quiz">
+                <h3>Teste de Obediência</h3>
+                <p>Quem enganou Eva?</p>
+                <button onclick="verificarResposta(7, 1)">Um anjo</button>
+                <button onclick="verificarResposta(7, 2)">A serpente</button>
+                <p id="resultado-7" class="resultado-quiz"></p>
+            </div>
+            <button class="botao-compartilhar"
+                onclick="compartilharHistoria('A Desobediência de Adão e Eva')">Compartilhar</button>
+        </section>
+
+        <section class="historia" id="abraao">
+            <h2>8. 🌟 A Promessa a Abraão</h2>
+            <div class="imagem-historia">
+                <img src="assets/images/abraao.jpg" alt="Abraão olhando para as estrelas" class="historia-imagem">
+            </div>
+            <div class="historia-texto">
+                <p class="destaque">"Olhe para o céu e conte as estrelas... Assim será a sua descendência." (Gênesis
+                    15:5)</p>
+                <p>Deus prometeu a Abraão que ele seria pai de uma grande nação, mesmo sendo idoso e sem filhos. Abraão
+                    confiou em Deus, e sua esposa Sara deu à luz Isaque.</p>
+                <ul>
+                    <li>⭐ Promessa de descendência</li>
+                    <li>👴 Abraão idoso</li>
+                    <li>👶 Nascimento de Isaque</li>
+                </ul>
+                <p class="efeito-sonoro">Deus sempre cumpre Suas promessas! 🙌</p>
+            </div>
+            <div class="quiz">
+                <h3>Teste de Fé</h3>
+                <p>Qual era o nome do filho de Abraão?</p>
+                <button onclick="verificarResposta(8, 1)">Isaque</button>
+                <button onclick="verificarResposta(8, 2)">Jacó</button>
+                <p id="resultado-8" class="resultado-quiz"></p>
+            </div>
+            <button class="botao-compartilhar"
+                onclick="compartilharHistoria('A Promessa a Abraão')">Compartilhar</button>
+        </section>
+
+        <section class="historia" id="ana-samuel">
+            <h2>9. 👶 Ana e o Nascimento de Samuel</h2>
+            <div class="imagem-historia">
+                <img src="assets/images/ana-samuel.jpg" alt="Ana orando por um filho" class="historia-imagem">
+            </div>
+            <div class="historia-texto">
+                <p class="destaque">"Se me deres um filho, eu o dedicarei ao Senhor." (1 Samuel 1:11)</p>
+                <p>Ana queria muito ter um filho e orou a Deus com fé. Deus ouviu sua oração, e ela deu à luz Samuel.
+                    Quando ele cresceu, Ana o levou ao templo para servir a Deus.</p>
+                <ul>
+                    <li>🙏 Oração de Ana</li>
+                    <li>👶 Nascimento de Samuel</li>
+                    <li>⛪ Servindo no templo</li>
+                </ul>
+                <p class="efeito-sonoro">Deus ouve nossas orações! 🎉</p>
+            </div>
+            <div class="quiz">
+                <h3>Teste de Oração</h3>
+                <p>O que Ana prometeu a Deus?</p>
+                <button onclick="verificarResposta(9, 1)">Dar dinheiro</button>
+                <button onclick="verificarResposta(9, 2)">Dedicar o filho</button>
+                <p id="resultado-9" class="resultado-quiz"></p>
+            </div>
+            <button class="botao-compartilhar"
+                onclick="compartilharHistoria('Ana e o Nascimento de Samuel')">Compartilhar</button>
+        </section>
+
+        <section class="historia" id="samuel">
+            <h2>10. 🌙 Deus Chama Samuel</h2>
+            <div class="imagem-historia">
+                <img src="assets/images/samuel.jpg" alt="Samuel ouvindo Deus" class="historia-imagem">
+            </div>
+            <div class="historia-texto">
+                <p class="destaque">"Fala, Senhor, pois o teu servo está ouvindo." (1 Samuel 3:10)</p>
+                <p>Samuel era um menino que servia no templo. Uma noite, ele ouviu uma voz chamando seu nome. Pensando
+                    que era o sacerdote Eli, ele foi até ele, mas Eli disse que não o havia chamado. Isso aconteceu três
+                    vezes, até que Eli percebeu que era Deus chamando Samuel.</p>
+                <ul>
+                    <li>🌌 Noite no templo</li>
+                    <li>🗣️ Voz chamando Samuel</li>
+                    <li>🙌 Resposta de Samuel</li>
+                </ul>
+                <p class="efeito-sonoro">Samuel aprendeu a ouvir a voz de Deus! 🎶</p>
+            </div>
+            <div class="quiz">
+                <h3>Teste de Atenção</h3>
+                <p>Quantas vezes Deus chamou Samuel?</p>
+                <button onclick="verificarResposta(10, 1)">1 vez</button>
+                <button onclick="verificarResposta(10, 2)">3 vezes</button>
+                <p id="resultado-10" class="resultado-quiz"></p>
+            </div>
+            <button class="botao-compartilhar" onclick="compartilharHistoria('Deus Chama Samuel')">Compartilhar</button>
+        </section>
+
+        <section class="historia" id="anjo-maria">
+            <h2>11. 👼 O Anjo e a Boa Nova para Maria</h2>
+            <div class="imagem-historia">
+                <img src="assets/images/anjo-maria.jpg" alt="Anjo Gabriel e Maria" class="historia-imagem">
+            </div>
+            <div class="historia-texto">
+                <p class="destaque">"Você será mãe do Filho do Altíssimo!" (Lucas 1:32)</p>
+                <p>O anjo Gabriel apareceu a Maria e anunciou que ela daria à luz Jesus. Mesmo assustada, Maria confiou em Deus:</p>
+                <ul>
+                    <li>💌 Anúncio celestial</li>
+                    <li>🙏 Resposta de Maria: "Que aconteça comigo conforme a tua palavra"</li>
+                    <li>🌟 Jesus, o Salvador prometido</li>
+                </ul>
+                <p class="efeito-sonoro">A maior notícia de todos os tempos! 🎉</p>
+            </div>
+            <div class="quiz">
+                <h3>Teste do Anúncio</h3>
+                <p>Como Maria respondeu ao anjo?</p>
+                <button onclick="verificarResposta(11, 1)">Com medo</button>
+                <button onclick="verificarResposta(11, 2)">Com aceitação</button>
+                <p id="resultado-11" class="resultado-quiz"></p>
+            </div>
+            <button class="botao-compartilhar" onclick="compartilharHistoria('O Anjo e Maria')">Compartilhar</button>
+        </section>
+
+        <section class="historia" id="mar-vermelho">
+            <h2>12. 🌊 Moisés e o Mar Vermelho</h2>
+            <div class="imagem-historia">
+                <img src="assets/images/mar-vermelho.jpg" alt="Moisés abre o mar" class="historia-imagem">
+            </div>
+            <div class="historia-texto">
+                <p class="destaque">"Estende a mão sobre o mar!" (Êxodo 14:16)</p>
+                <p>Perseguidos pelo exército egípcio, Deus abriu o Mar Vermelho para os israelitas:</p>
+                <ul>
+                    <li>🚶♂️ Povo caminhando no leito seco</li>
+                    <li>🌊 Águas como muralhas</li>
+                    <li>⚔️ Inimigos afogados</li>
+                </ul>
+                <p class="arco-iris">Deus sempre faz um caminho onde parece impossível! ✨</p>
+            </div>
+            <div class="quiz">
+                <h3>Teste de Libertação</h3>
+                <p>O que Moisés usou para abrir o mar?</p>
+                <button onclick="verificarResposta(12, 1)">Espada</button>
+                <button onclick="verificarResposta(12, 2)">Cajado</button>
+                <p id="resultado-12" class="resultado-quiz"></p>
+            </div>
+            <button class="botao-compartilhar" onclick="compartilharHistoria('Moisés e o Mar Vermelho')">Compartilhar</button>
+        </section>
+
+        <section class="historia" id="jerico">
+            <h2>13. 🏰 A Queda de Jericó</h2>
+            <div class="imagem-historia">
+                <img src="assets/images/jerico.jpg" alt="Muros de Jericó caindo" class="historia-imagem">
+            </div>
+            <div class="historia-texto">
+                <p class="destaque">"Gritem, pois o Senhor lhes entregou a cidade!" (Josué 6:16)</p>
+                <p>Estratégia divina para derrubar Jericó:</p>
+                <ul>
+                    <li>6 dias: 1 volta silenciosa ao dia</li>
+                    <li>7º dia: 7 voltas + trombetas + gritos</li>
+                    <li>🧱 Muros caíram milagrosamente!</li>
+                </ul>
+                <p class="efeito-sonoro">A obediência traz vitórias incríveis! 🎺</p>
+            </div>
+            <div class="quiz">
+                <h3>Teste de Estratégia</h3>
+                <p>Quantas voltas deram no 7º dia?</p>
+                <button onclick="verificarResposta(13, 1)">7 voltas</button>
+                <button onclick="verificarResposta(13, 2)">1 volta</button>
+                <p id="resultado-13" class="resultado-quiz"></p>
+            </div>
+            <button class="botao-compartilhar" onclick="compartilharHistoria('A Queda de Jericó')">Compartilhar</button>
+        </section>
+
+        <section class="historia" id="tempestade">
+            <h2>14. ⛈️ Jesus Acalma a Tempestade</h2>
+            <div class="imagem-historia">
+                <img src="assets/images/tempestade.jpg" alt="Jesus acalmando o mar" class="historia-imagem">
+            </div>
+            <div class="historia-texto">
+                <p class="destaque">"Acalmem-se!" (Marcos 4:39)</p>
+                <p>Os discípulos em pânico acordaram Jesus durante uma tempestade:</p>
+                <ul>
+                    <li>🌪️ Vento e ondas violentas</li>
+                    <li>😴 Jesus dormindo no barco</li>
+                    <li>🕊️ Paz instantânea após Sua ordem</li>
+                </ul>
+                <p class="efeito-sonoro">Jesus tem controle sobre toda criação! 🌅</p>
+            </div>
+            <div class="quiz">
+                <h3>Teste de Fé</h3>
+                <p>O que Jesus repreendeu?</p>
+                <button onclick="verificarResposta(14, 1)">Os discípulos</button>
+                <button onclick="verificarResposta(14, 2)">O vento e o mar</button>
+                <p id="resultado-14" class="resultado-quiz"></p>
+            </div>
+            <button class="botao-compartilhar" onclick="compartilharHistoria('Jesus Acalma a Tempestade')">Compartilhar</button>
+        </section>
+
+        <section class="historia" id="paes-peixes">
+            <h2>15. 🥖 Multiplicação dos Pães e Peixes</h2>
+            <div class="imagem-historia">
+                <img src="assets/images/paes-peixes.jpg" alt="Menino com pães e peixes" class="historia-imagem">
+            </div>
+            <div class="historia-texto">
+                <p class="destaque">"Tragam-nos aqui a mim." (Mateus 14:18)</p>
+                <p>Um menino ofereceu 5 pães e 2 peixes. Jesus multiplicou o alimento para alimentar mais de 5.000 pessoas!</p>
+                <ul>
+                    <li>👦 Contribuição humilde</li>
+                    <li>🙌 Bênção e multiplicação</li>
+                    <li>🧺 12 cestos de sobras!</li>
+                </ul>
+                <p class="arco-iris">Deus faz muito com pouco quando entregamos a Ele! ✨</p>
+            </div>
+            <div class="quiz">
+                <h3>Teste de Matemática Divina</h3>
+                <p>Quantos cestos sobraram?</p>
+                <button onclick="verificarResposta(15, 1)">5 cestos</button>
+                <button onclick="verificarResposta(15, 2)">12 cestos</button>
+                <p id="resultado-15" class="resultado-quiz"></p>
+            </div>
+            <button class="botao-compartilhar" onclick="compartilharHistoria('Multiplicação dos Pães')">Compartilhar</button>
+        </section>
+
+        <section class="historia" id="filho-prodigo">
+            <h2>16. 🏠 O Filho Pródigo</h2>
+            <div class="imagem-historia">
+                <img src="assets/images/filho-prodigo.jpg" alt="Pai abraçando o filho" class="historia-imagem">
+            </div>
+            <div class="historia-texto">
+                <p class="destaque">"Este meu filho estava morto e voltou à vida!" (Lucas 15:24)</p>
+                <p>Um filho gastou toda herança, mas ao voltar arrependido, o pai o recebeu com festa:</p>
+                <ul>
+                    <li>💸 Desperdício de dinheiro</li>
+                    <li>🐷 Comendo com porcos</li>
+                    <li>🎉 Festa do perdão</li>
+                </ul>
+                <p class="efeito-sonoro">Deus nunca desiste de nós! 💖</p>
+            </div>
+            <div class="quiz">
+                <h3>Teste de Perdão</h3>
+                <p>Como o pai reagiu ao ver o filho?</p>
+                <button onclick="verificarResposta(16, 1)">Expulsou-o</button>
+                <button onclick="verificarResposta(16, 2)">Abraçou-o</button>
+                <p id="resultado-16" class="resultado-quiz"></p>
+            </div>
+            <button class="botao-compartilhar" onclick="compartilharHistoria('O Filho Pródigo')">Compartilhar</button>
+        </section>
+
+        <section class="historia" id="elias-corvos">
+            <h2>17. 🐦⬛ Elias e os Corvos</h2>
+            <div class="imagem-historia">
+                <img src="assets/images/elias-corvos.jpg" alt="Corvos levando comida" class="historia-imagem">
+            </div>
+            <div class="historia-texto">
+                <p class="destaque">"Eu ordenei aos corvos que o alimentem." (1 Reis 17:4)</p>
+                <p>Durante a seca, Deus sustentou Elias de maneira surpreendente:</p>
+                <ul>
+                    <li>☀️ Fome e seca</li>
+                    <li>🍞 Corvos trazendo pão e carne</li>
+                    <li>💧 Água do riacho</li>
+                </ul>
+                <p class="arco-iris">Deus usa até corvos para cuidar dos seus! 🌟</p>
+            </div>
+            <div class="quiz">
+                <h3>Teste de Sustento</h3>
+                <p>Quantas vezes os corvos traziam comida?</p>
+                <button onclick="verificarResposta(17, 1)">1 vez por dia</button>
+                <button onclick="verificarResposta(17, 2)">2 vezes por dia</button>
+                <p id="resultado-17" class="resultado-quiz"></p>
+            </div>
+            <button class="botao-compartilhar" onclick="compartilharHistoria('Elias e os Corvos')">Compartilhar</button>
+        </section>
+
+        <section class="historia" id="ovelha-perdida">
+            <h2>18. 🐑 A Ovelha Perdida</h2>
+            <div class="imagem-historia">
+                <img src="assets/images/ovelha-perdida.jpg" alt="Pastor com ovelha" class="historia-imagem">
+            </div>
+            <div class="historia-texto">
+                <p class="destaque">"Há mais alegria no céu por um pecador que se arrepende..." (Lucas 15:7)</p>
+                <p>Um pastor deixou 99 ovelhas para buscar 1 perdida:</p>
+                <ul>
+                    <li>🌄 Busca incansável</li>
+                    <li>🎉 Festa ao encontrá-la</li>
+                    <li>💞 Deus nos ama individualmente</li>
+                </ul>
+                <p class="efeito-sonoro">Você é precioso para Deus! 💎</p>
+            </div>
+            <div class="quiz">
+                <h3>Teste do Pastor</h3>
+                <p>Quantas ovelhas ficaram no campo?</p>
+                <button onclick="verificarResposta(18, 1)">99</button>
+                <button onclick="verificarResposta(18, 2)">100</button>
+                <p id="resultado-18" class="resultado-quiz"></p>
+            </div>
+            <button class="botao-compartilhar" onclick="compartilharHistoria('A Ovelha Perdida')">Compartilhar</button>
+        </section>
+
+        <section class="historia" id="pedro-aguas">
+            <h2>19. 🌊 Pedro Anda Sobre as Águas</h2>
+            <div class="imagem-historia">
+                <img src="assets/images/pedro-aguas.jpg" alt="Pedro andando no mar" class="historia-imagem">
+            </div>
+            <div class="historia-texto">
+                <p class="destaque">"Por que duvidaste?" (Mateus 14:31)</p>
+                <p>Pedro teve coragem de andar sobre as águas, mas começou a afundar quando duvidou:</p>
+                <ul>
+                    <li>🚶♂️ Passos de fé</li>
+                    <li>🌪️ Vento e medo</li>
+                    <li>✋ Jesus o salvou</li>
+                </ul>
+                <p class="arco-iris">Mantenha os olhos em Jesus, não nas tempestades! ⚓</p>
+            </div>
+            <div class="quiz">
+                <h3>Teste de Coragem</h3>
+                <p>Por que Pedro começou a afundar?</p>
+                <button onclick="verificarResposta(19, 1)">Vento forte</button>
+                <button onclick="verificarResposta(19, 2)">Dúvida</button>
+                <p id="resultado-19" class="resultado-quiz"></p>
+            </div>
+            <button class="botao-compartilhar" onclick="compartilharHistoria('Pedro Anda Sobre as Águas')">Compartilhar</button>
+        </section>
+
+        <!-- História 20 -->
+        <section class="historia" id="lazaro">
+            <h2>20. ✨ Jesus Ressuscita Lázaro</h2>
+            <div class="imagem-historia">
+                <img src="assets/images/lazaro.jpg" alt="Lázaro ressuscitando" class="historia-imagem">
+            </div>
+            <div class="historia-texto">
+                <p class="destaque">"Eu sou a ressurreição e a vida!" (João 11:25)</p>
+                <p>Quando Jesus chegou:</p>
+                <ul>
+                    <li>⏳ Lázaro já estava morto há 4 dias</li>
+                    <li>😭 Marta e Maria choravam</li>
+                    <li>🗣️ Jesus ordenou: "Lázaro, venha para fora!"</li>
+                </ul>
+                <p class="efeito-sonoro">E o milagre aconteceu! 🎉</p>
+            </div>
+            <div class="quiz">
+                <h3>Questão Final</h3>
+                <p>Quantos dias Lázaro estava morto?</p>
+                <button onclick="verificarResposta(20, 1)">3 dias</button>
+                <button onclick="verificarResposta(20, 2)">4 dias</button>
+                <p id="resultado-20" class="resultado-quiz"></p>
+            </div>
+            <button class="botao-compartilhar"
+                onclick="compartilharHistoria('Ressurreição de Lázaro')">Compartilhar</button>
         </section>
 
         <!-- Seção de Comentários -->
         <div class="comentarios">
-            <h2>💬 Conte o que achou!</h2>
+            <h2>💬 Conte o que achou das histórias!</h2>
             <div id="disqus_thread"></div>
         </div>
     </main>
