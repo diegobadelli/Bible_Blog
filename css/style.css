@@ -448,3 +448,296 @@ button {
 .botao-gerar:hover {
   background: #2980b9;
 }
+
+
+/* Início da seção Jogos */
+
+/* Estilos específicos para jogos */
+.pagina-jogos .container-jogos {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.pagina-jogos .card-jogo {
+  background: white;
+  border-radius: 15px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.pagina-jogos .jogo-container {
+  background: #f8f9fa;
+  padding: 1rem;
+  border-radius: 10px;
+  min-height: 250px;
+}
+
+/* Quebra-Cabeça */
+.pecas {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin: 1rem 0;
+}
+
+.peca {
+  width: 80px;
+  height: 80px;
+  background: #3498db url('assets/images/arca-completa.jpg') no-repeat;
+  background-size: cover;
+  border: 2px solid #fff;
+  cursor: grab;
+}
+.peca:hover {
+  transform: scale(1.05);
+}
+
+/* Memória */
+.grade-memoria {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+.carta {
+  width: 70px;
+  height: 70px;
+  background: #2c3e50;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.carta.virada {
+  background: #fff;
+  transform: rotateY(180deg);
+}
+
+/* Caça-Palavras */
+.tabela-palavras {
+  margin: 0 auto;
+  border-collapse: collapse;
+}
+
+.tabela-palavras td {
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  border: 1px solid #ddd;
+  font-weight: bold;
+}
+
+/* Botões */
+.botao-jogar {
+  background: #e74c3c;
+  color: white;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 25px;
+  cursor: pointer;
+  margin-top: 1rem;
+}
+
+.botao-jogar:hover {
+  background: #c0392b;
+}
+
+/* Quebra-Cabeça */
+.pecas-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.peca {
+  width: 80px;
+  height: 80px;
+  background: #3498db;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  color: white;
+  cursor: grab;
+  transition: transform 0.2s;
+}
+
+.peca:active {
+  cursor: grabbing;
+}
+
+.area-montagem {
+  border: 2px dashed #2c3e50;
+  border-radius: 10px;
+  padding: 10px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  min-height: 180px;
+}
+
+.alvo {
+  width: 80px;
+  height: 80px;
+  border: 2px dashed #2c3e50;
+  background: #f8f9fa;
+}
+
+.alvo.correta {
+  border-color: #2ecc71;
+}
+
+#mensagem {
+  margin-top: 10px;
+  font-weight: bold;
+  color: #2ecc71;
+}
+
+/* Novos estilos */
+.dificuldade {
+  margin: 1rem 0;
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+}
+
+.dificuldade button {
+  background: #3498db;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.info-jogo {
+  display: flex; 
+  font-weight: bold;
+}
+
+.peca-imagem {
+  background-image: url('../assets/images/arca-completa.jpg'); /* Caminho relativo corrigido */
+  background-size: 400px 400px; /* Tamanho total da imagem */
+  border: 2px solid #fff;
+  background-repeat: no-repeat;
+  cursor: grab;
+  transition: transform 0.2s;
+}
+
+/* Tamanhos diferentes para as dificuldades */
+.pecas-container[data-dificuldade="4"] .peca { 
+  width: 150px; 
+  height: 150px;
+  background-size: 300% 300%; /* Para 2x2 */
+}
+
+.pecas-container[data-dificuldade="9"] .peca { 
+  width: 100px; 
+  height: 100px;
+  background-size: 300% 300%; /* Para 3x3 */
+}
+
+.pecas-container[data-dificuldade="16"] .peca { 
+  width: 75px; 
+  height: 75px;
+  background-size: 400% 400%; /* Para 4x4 */
+}
+
+/* Ajuste para mobile */
+@media (max-width: 768px) {
+  .peca {
+      width: 60px;
+      height: 60px;
+  }
+  
+  .dificuldade {
+      flex-direction: column;
+  }
+}
+
+/* Estilos do Quiz */
+.quiz-container {
+  background: #f8f9fa;
+  border-radius: 15px;
+  padding: 2rem;
+}
+
+.cabecalho-quiz {
+  margin-bottom: 1.5rem;
+}
+
+.progresso {
+  height: 10px;
+  background: #e9ecef;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.barra-progresso {
+  height: 100%;
+  background: #2ecc71;
+  width: 0%;
+  transition: width 0.5s ease;
+}
+
+.pergunta {
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
+  color: #2c3e50;
+  font-weight: 500;
+}
+
+.opcoes {
+  display: grid;
+  gap: 10px;
+}
+
+.opcao {
+  background: white;
+  border: 2px solid #3498db;
+  border-radius: 8px;
+  padding: 1rem;
+  cursor: pointer;
+  transition: all 0.3s;
+  text-align: left;
+}
+
+.opcao:hover:not(.correta):not(.errada) {
+  transform: translateY(-2px);
+  box-shadow: 0 3px 10px rgba(52, 152, 219, 0.2);
+}
+
+.opcao.correta {
+  background: #2ecc71 !important;
+  border-color: #27ae60 !important;
+  color: white;
+}
+
+.opcao.errada {
+  background: #e74c3c !important;
+  border-color: #c0392b !important;
+  color: white;
+}
+
+.botao-proxima {
+  background: #3498db;
+  color: white;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 25px;
+  cursor: pointer;
+  margin-top: 1rem;
+  display: none;
+}
+
+.feedback {
+  text-align: center;
+  margin-top: 1.5rem;
+}
