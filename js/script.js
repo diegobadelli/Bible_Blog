@@ -15,6 +15,14 @@ function gerarOracao() {
   document.getElementById("texto-oracao").textContent = oracoes[indice];
 }
 
+function compartilharVersiculoWhatsApp() {
+  const texto = document.querySelector(".texto-versiculo")?.textContent || "Versículo inspirador da Bíblia";
+  const referencia = document.querySelector(".referencia-versiculo")?.textContent || "";
+  const mensagem = `${texto} ${referencia} - Veja mais em ${window.location.href}`;
+  window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(mensagem)}`);
+}
+
+
 // Gerar oração automática ao carregar a página + a cada 24h
 function atualizarOracaoDiaria() {
   const hoje = new Date().getDate(); // Dia do mês (1-31)
