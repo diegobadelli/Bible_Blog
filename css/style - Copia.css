@@ -1,0 +1,783 @@
+/* Reset Básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Arial", sans-serif;
+}
+
+body {
+  font-family: 'Nunito', sans-serif;
+}
+
+
+/* Cabeçalho */
+header {
+  background: #2c3e50;
+  color: white;
+  padding: 1rem;
+  text-align: center;
+}
+
+nav {
+  margin-top: 1rem;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  margin: 0 1rem;
+}
+
+/* Versículo do Dia */
+.versiculo-do-dia {
+  background: #f8f9fa;
+  padding: 2rem;
+  text-align: center;
+  margin: 2rem auto;
+  max-width: 800px;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Cards de Histórias */
+.grid-historias {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  padding: 1rem;
+  margin: 1rem 0;
+}
+
+/* Estilo para subtítulos */
+.subtitulo-secao {
+  color: #2c3e50;
+  text-align: center;
+  margin: 2rem 0;
+  padding-bottom: 1rem;
+  border-bottom: 3px solid #3498db;
+  display: inline-block;
+  width: 100%;
+  font-size: 1.5rem;
+}
+
+/* Tamanho dos títulos dos cards */
+.card-historia h4 {
+  font-size: 1.2rem;
+  margin: 0.8rem 0;
+  color: #2c3e50;
+}
+
+.historias-destaque {
+  background: #f8f9fa;
+  padding: 2rem;
+  margin: 2rem auto;
+  max-width: 1000px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.card-historia {
+  background: white;
+  border-radius: 10px;
+  padding: 1rem;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.card-historia img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.card-historia h3 {
+  margin: 1rem 0;
+}
+
+.card-historia p {
+  margin-bottom: 1.5rem;
+  flex-grow: 1;
+}
+
+.botao-leia {
+  background: #3498db;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.botao-leia:hover {
+  transform: scale(1.05);
+  background: #2574A9;
+}
+
+/* Botões */
+.botao-compartilhar,
+.botao-leia {
+  background: #3498db;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 1rem;
+}
+
+/* Mensagem de erro */
+.erro {
+  color: #dc3545;
+  font-weight: bold;
+}
+
+/* Botão de tentar novamente */
+button {
+  background: #28a745;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 0.5rem;
+}
+
+/* Estilos para historias.html */
+.container-historias {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.imagem-container {
+  display: flex;
+  justify-content: center;
+  /* Centraliza horizontalmente */
+  margin: 1rem 0;
+  /* Espaçamento acima e abaixo */
+  height: 200px;
+  /* Altura fixa para todas as imagens */
+  overflow: hidden;
+  /* Esconde partes excedentes */
+  border-radius: 8px;
+}
+
+.imagem-historia {
+  display: flex;
+  justify-content: center;
+  /* Centraliza horizontalmente */
+  margin: 1rem 0;
+  /* Espaçamento acima e abaixo */
+}
+
+.imagem-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* Mantém a proporção sem distorcer */
+}
+
+.historia {
+  background: white;
+  border-radius: 15px;
+  padding: 2rem;
+  margin: 2rem 0;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+.historia-imagem {
+  width: 100%;
+  /* Largura máxima */
+  max-width: 600px;
+  /* Tamanho máximo */
+  height: auto;
+  /* Mantém a proporção */
+  border-radius: 10px;
+  /* Bordas arredondadas */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  /* Sombra suave */
+  margin: 1rem 0;
+}
+
+.destaque {
+  background: #f0f8ff;
+  padding: 1rem;
+  border-left: 4px solid #3498db;
+  margin: 1rem 0;
+}
+
+.quiz {
+  background: #fff9e6;
+  padding: 1.5rem;
+  border-radius: 10px;
+  margin: 1.5rem 0;
+}
+
+.quiz button {
+  margin: 0.5rem;
+  padding: 0.5rem 1rem;
+}
+
+.resultado-quiz {
+  font-weight: bold;
+  margin-top: 1rem;
+}
+
+.personagens {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+.personagem {
+  padding: 1rem;
+  border-radius: 8px;
+  text-align: center;
+}
+
+/* Efeitos Especiais */
+.arco-iris {
+  background: linear-gradient(45deg,
+      #ff0000,
+      #ff8000,
+      #ffff00,
+      #00ff00,
+      #00ffff,
+      #0000ff,
+      #8000ff);
+  -webkit-background-clip: text;
+  color: transparent;
+  font-weight: bold;
+}
+
+.efeito-sonoro {
+  animation: pulsar 1s infinite;
+}
+
+@keyframes pulsar {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.05);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Jogo Diário */
+.jogo-diario {
+  background: #fff3e0;
+  padding: 2rem;
+  margin: 2rem auto;
+  max-width: 800px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.quiz-rapido button {
+  margin: 0.5rem;
+  background: #4caf50;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.quiz-rapido button:hover {
+  background: #45a049;
+}
+
+#resultado-jogo {
+  margin-top: 1rem;
+  font-weight: bold;
+}
+
+/* Seção Colorir */
+.colorir {
+  background: #f8f9fa;
+  padding: 2rem;
+  margin: 2rem auto;
+  max-width: 1000px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.grid-desenhos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  padding: 1rem;
+}
+
+.card-desenho {
+  background: white;
+  border-radius: 10px;
+  padding: 1rem;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.card-desenho img {
+  width: 60%;
+  height: 60%;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.botao-download {
+  background: #ff9800;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  text-decoration: none;
+  margin-top: 1rem;
+  transition: background 0.3s;
+}
+
+.botao-download:hover {
+  background: #e68900;
+}
+
+/* Curiosidades */
+.curiosidades {
+  background: #f8f9fa;
+  padding: 2rem;
+  margin: 2rem auto;
+  max-width: 800px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.card-curiosidade {
+  background: white;
+  padding: 1.5rem;
+  margin: 1rem 0;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  text-align: left;
+}
+
+.card-curiosidade p {
+  margin: 0;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+/* Vídeo */
+/* Estilos para o vídeo */
+.video-destaque {
+  padding: 1rem 0;
+  margin: 1rem 0;
+}
+
+.video-container {
+  width: 90%;
+  /* Largura relativa */
+  max-width: 800px;
+  /* Largura máxima */
+  margin: 20px auto;
+  /* Centraliza horizontalmente */
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.video-container iframe {
+  width: 100%;
+  height: 450px;
+  /* Altura fixa (ajuste conforme necessário) */
+  border: none;
+}
+
+/* Responsivo para dispositivos menores */
+@media (max-width: 768px) {
+
+  .versiculo-do-dia,
+  .jogo-diario,
+  .colorir,
+  .curiosidades,
+  .oracao-do-dia,
+  .historias-destaque {
+    margin: 1rem;
+    padding: 1rem;
+  }
+
+  .grid-historias,
+  .grid-desenhos {
+    grid-template-columns: 1fr;
+  }
+
+  .video-container {
+    width: 95%;
+    /* Aumenta a largura relativa em telas pequenas */
+  }
+
+  .video-container iframe {
+    height: 250px;
+    /* Altura menor para mobile */
+  }
+}
+
+.video-destaque h2 {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+/* Oração do Dia */
+.oracao-do-dia {
+  background: #f8f9fa;
+  padding: 2rem;
+  margin: 2rem auto;
+  max-width: 800px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+#texto-oracao {
+  font-size: 1.2rem;
+  margin: 1.5rem 0;
+  color: #2c3e50;
+  line-height: 1.6;
+}
+
+.botao-gerar {
+  background: #3498db;
+  color: white;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.botao-gerar:hover {
+  background: #2980b9;
+}
+
+
+/* Início da seção Jogos */
+
+/* Estilos específicos para jogos */
+.pagina-jogos .container-jogos {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.pagina-jogos .card-jogo {
+  background: white;
+  border-radius: 15px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.pagina-jogos .jogo-container {
+  background: #f8f9fa;
+  padding: 1rem;
+  border-radius: 10px;
+  min-height: 250px;
+}
+
+/* Quebra-Cabeça */
+.pecas {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin: 1rem 0;
+}
+
+.peca {
+  width: 80px;
+  height: 80px;
+  background: #3498db url('assets/images/arca-completa.jpg') no-repeat;
+  background-size: cover;
+  border: 2px solid #fff;
+  cursor: grab;
+}
+
+.peca:hover {
+  transform: scale(1.05);
+}
+
+/* Memória */
+.grade-memoria {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+.carta {
+  width: 70px;
+  height: 70px;
+  background: #2c3e50;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.carta.virada {
+  background: #fff;
+  transform: rotateY(180deg);
+}
+
+/* Caça-Palavras */
+.tabela-palavras {
+  margin: 0 auto;
+  border-collapse: collapse;
+}
+
+.tabela-palavras td {
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  border: 1px solid #ddd;
+  font-weight: bold;
+}
+
+/* Botões */
+.botao-jogar {
+  background: #e74c3c;
+  color: white;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 25px;
+  cursor: pointer;
+  margin-top: 1rem;
+}
+
+.botao-jogar:hover {
+  background: #c0392b;
+}
+
+/* Quebra-Cabeça */
+.pecas-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.peca {
+  width: 80px;
+  height: 80px;
+  background: #3498db;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  color: white;
+  cursor: grab;
+  transition: transform 0.2s;
+}
+
+.peca:active {
+  cursor: grabbing;
+}
+
+.area-montagem {
+  border: 2px dashed #2c3e50;
+  border-radius: 10px;
+  padding: 10px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  min-height: 180px;
+}
+
+.alvo {
+  width: 80px;
+  height: 80px;
+  border: 2px dashed #2c3e50;
+  background: #f8f9fa;
+}
+
+.alvo.correta {
+  border-color: #2ecc71;
+}
+
+#mensagem {
+  margin-top: 10px;
+  font-weight: bold;
+  color: #2ecc71;
+}
+
+/* Novos estilos */
+.dificuldade {
+  margin: 1rem 0;
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+}
+
+.dificuldade button {
+  background: #3498db;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.info-jogo {
+  display: flex;
+  font-weight: bold;
+}
+
+.peca-imagem {
+  background-image: url('../assets/images/arca-completa.jpg');
+  /* Caminho relativo corrigido */
+  background-size: 400px 400px;
+  /* Tamanho total da imagem */
+  border: 2px solid #fff;
+  background-repeat: no-repeat;
+  cursor: grab;
+  transition: transform 0.2s;
+}
+
+/* Tamanhos diferentes para as dificuldades */
+.pecas-container[data-dificuldade="4"] .peca {
+  width: 150px;
+  height: 150px;
+  background-size: 300% 300%;
+  /* Para 2x2 */
+}
+
+.pecas-container[data-dificuldade="9"] .peca {
+  width: 100px;
+  height: 100px;
+  background-size: 300% 300%;
+  /* Para 3x3 */
+}
+
+.pecas-container[data-dificuldade="16"] .peca {
+  width: 75px;
+  height: 75px;
+  background-size: 400% 400%;
+  /* Para 4x4 */
+}
+
+/* Ajuste para mobile */
+@media (max-width: 768px) {
+  .peca {
+    width: 60px;
+    height: 60px;
+  }
+
+  .dificuldade {
+    flex-direction: column;
+  }
+
+  .card-historia img {
+    height: 120px;
+  }
+
+  .video-container iframe {
+    height: 250px;
+  }
+}
+
+/* Estilos do Quiz */
+.quiz-container {
+  background: #f8f9fa;
+  border-radius: 15px;
+  padding: 2rem;
+}
+
+.cabecalho-quiz {
+  margin-bottom: 1.5rem;
+}
+
+.progresso {
+  height: 10px;
+  background: #e9ecef;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.barra-progresso {
+  height: 100%;
+  background: #2ecc71;
+  width: 0%;
+  transition: width 0.5s ease;
+}
+
+.pergunta {
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
+  color: #2c3e50;
+  font-weight: 500;
+}
+
+.opcoes {
+  display: grid;
+  gap: 10px;
+}
+
+.opcao {
+  background: white;
+  border: 2px solid #3498db;
+  border-radius: 8px;
+  padding: 1rem;
+  cursor: pointer;
+  transition: all 0.3s;
+  text-align: left;
+}
+
+.opcao:hover:not(.correta):not(.errada) {
+  transform: translateY(-2px);
+  box-shadow: 0 3px 10px rgba(52, 152, 219, 0.2);
+}
+
+.opcao.correta {
+  background: #2ecc71 !important;
+  border-color: #27ae60 !important;
+  color: white;
+}
+
+.opcao.errada {
+  background: #e74c3c !important;
+  border-color: #c0392b !important;
+  color: white;
+}
+
+.botao-proxima {
+  background: #3498db;
+  color: white;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 25px;
+  cursor: pointer;
+  margin-top: 1rem;
+  display: none;
+}
+
+.feedback {
+  text-align: center;
+  margin-top: 1.5rem;
+}
