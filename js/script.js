@@ -9,6 +9,12 @@ const oracoes = [
   "Jesus, ajuda-me a ser corajoso como Davi e a confiar em Ti em todas as situações. Obrigado por me amar sempre! ✨",
 ];
 
+function toggleMenu() {
+    const nav = document.getElementById("navbar");
+    nav.classList.toggle("active");
+}
+
+
 // Função para gerar oração aleatória
 function gerarOracao() {
   const indice = Math.floor(Math.random() * oracoes.length);
