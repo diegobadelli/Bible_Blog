@@ -3,91 +3,89 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Arial", sans-serif;
 }
 
+
 body {
-  font-family: 'Nunito', sans-serif;
+  font-family: 'Nunito';
+  background-color: #fce4ec;
+  /* Fundo suave e acolhedor */
 }
 
 
 /* Cabeçalho */
 /* Navbar moderna */
+/* Header Moderno e Compacto */
 header {
-  background: linear-gradient(45deg, #2c3e50, #3498db); /* Gradiente Azul */
-  color: white;
-  padding: 1rem 1.5rem;
-  text-align: center;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  background: linear-gradient(45deg, #3498db, #2980b9); /* Azul mais intenso */
+  padding: 0 1rem;
+  height: 60px; /* Header mais compacto */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   position: sticky;
   top: 0;
-  width: 100%;
   z-index: 1000;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+}
+
+/* Título do Header */
+header h1 {
+  font-size: 1.5rem;
+  margin: 0;
+  color: #fff;
 }
 
 /* Menu de Navegação */
 nav {
   display: flex;
-  gap: 2rem;
+  gap: 1.5rem;
 }
 
 nav a {
-  color: white;
+  color: #fff;
   text-decoration: none;
-  font-size: 1.1rem;
-  font-weight: bold;
-  padding: 0.5rem 1rem;
-  border-radius: 5px;
-  transition: all 0.3s ease-in-out;
+  font-size: 1rem;
+  transition: color 0.3s;
 }
 
 nav a:hover {
-  background: rgba(255, 255, 255, 0.2);
-  transform: scale(1.1);
+  color: #ffeb3b;
 }
 
-/* Ícone do menu hamburguer */
+/* Ícone do Menu (Hambúrguer) */
 .menu-icon {
   display: none;
-  font-size: 2rem;
+  font-size: 1.8rem;
   cursor: pointer;
-  color: white;
+  color: #fff;
 }
 
-/* Menu Responsivo */
+/* Versão Mobile */
 @media (max-width: 768px) {
-  header {
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem;
-  }
-
+  /* Exibe o ícone do menu */
   .menu-icon {
     display: block;
   }
-
+  
+  /* Esconde a navegação padrão */
   nav {
     display: none;
     flex-direction: column;
-    background: #2c3e50;
+    background: #4fc3f7;
     position: absolute;
     top: 60px;
     right: 0;
     width: 100%;
-    text-align: center;
-    padding: 1rem 0;
+    padding: 0.5rem 0;
   }
-
+  
   nav a {
-    display: block;
-    padding: 1rem;
+    padding: 0.5rem;
+    font-size: 1.1rem;
   }
-
-  /* Mostrar o menu quando ativo */
+  
+  /* Exibe o menu quando ativo */
   nav.active {
     display: flex;
   }
@@ -171,32 +169,23 @@ nav a:hover {
   flex-grow: 1;
 }
 
-.botao-leia {
-  background: #3498db;
-  color: white;
-  border: none;
-  padding: 0.5rem 1rem;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: all 0.3s ease-in-out;
-}
-
-.botao-leia:hover {
-  transform: scale(1.05);
-  background: #2574A9;
-}
 
 /* Botões */
-.botao-compartilhar,
-.botao-leia {
-  background: #3498db;
+.botao-leia, .botao-compartilhar, .botao-gerar {
+  background: #ff80ab;
   color: white;
   border: none;
-  padding: 0.5rem 1rem;
-  border-radius: 5px;
+  padding: 0.5rem 1.5rem;
+  border-radius: 20px;
   cursor: pointer;
-  margin-top: 1rem;
+  transition: transform 0.3s ease, background 0.3s ease;
 }
+
+.botao-leia:hover, .botao-compartilhar:hover, .botao-gerar:hover {
+  transform: scale(1.1);
+  background: #f06292;
+}
+
 
 /* Mensagem de erro */
 .erro {
