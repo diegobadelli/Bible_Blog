@@ -2,8 +2,11 @@ let timer;
 let segundos = 0;
 let pecasCorretas = 0;
 let dificuldadeAtual = 4; // 4, 9 ou 16 peças
-const somAcerto = document.getElementById("som-acerto");
-const somVitoria = document.getElementById("som-vitoria");
+
+document.addEventListener("DOMContentLoaded", () => {
+  const somAcerto = document.getElementById("som-acerto");
+  const somVitoria = document.getElementById("som-vitoria");
+});
 
 function iniciarTimer() {
   timer = setInterval(() => {
@@ -110,7 +113,7 @@ function soltarPeca(event) {
 }
 
 function salvarRecorde() {
-  const melhorTempo = localStorage.getItem("melhorTempo") || Infinity;
+  const melhorTempo = Number(localStorage.getItem("melhorTempo")) || 99999;
   if (segundos < melhorTempo) {
     localStorage.setItem("melhorTempo", segundos);
     document.getElementById("melhor-tempo").textContent = `${Math.floor(
@@ -138,7 +141,7 @@ function mudarDificuldade(novaDificuldade) {
 
 // Iniciar ao carregar
 document.addEventListener("DOMContentLoaded", () => {
-  const melhorTempo = localStorage.getItem("melhorTempo");
+  const melhorTempo = Number(localStorage.getItem("melhorTempo")) || 99999;
   if (melhorTempo) {
     document.getElementById("melhor-tempo").textContent = `${Math.floor(
       melhorTempo / 60
@@ -150,62 +153,66 @@ document.addEventListener("DOMContentLoaded", () => {
   iniciarTimer();
 });
 
-// Banco de Perguntas
+// Banco de Perguntas atualizado com categorias e níveis
 const perguntas = [
   {
-    pergunta: "O que Deus prometeu a Abraão em Gênesis 12:2?",
-    opcoes: [
-      "Fazer dele uma grande nação",
-      "Dar-lhe riquezas infinitas",
-      "Protegê-lo de todos os perigos",
-    ],
-    correta: 0,
-    referencia: "Gênesis 12:2",
+    categoria: "Antigo Testamento",
+    pergunta: "Quem construiu a arca para sobreviver ao dilúvio?",
+    opcoes: ["Moisés", "Noé", "Abraão"],
+    correta: 1,
+    referencia: "Gênesis 6:14",
+    explicacao:
+      "Deus ordenou que Noé construísse a arca para salvar sua família e os animais do dilúvio.",
   },
   {
-    pergunta: "Qual promessa Deus fez após o dilúvio?",
-    opcoes: [
-      "Nunca mais destruir a terra com água",
-      "Dar sabedoria aos humanos",
-      "Enviar um salvador imediatamente",
-    ],
-    correta: 0,
-    referencia: "Gênesis 9:11",
+    categoria: "Novo Testamento",
+    pergunta: "Quantos discípulos Jesus escolheu?",
+    opcoes: ["7", "10", "12"],
+    correta: 2,
+    referencia: "Mateus 10:2-4",
+    explicacao:
+      "Jesus escolheu 12 discípulos para segui-lo e espalhar seus ensinamentos.",
   },
   {
-    pergunta: "O que Jeremias 29:11 diz sobre os planos de Deus?",
-    opcoes: [
-      "São planos para o bem e não para o mal",
-      "Exigem sacrifícios humanos",
-      "São secretos e incompreensíveis",
-    ],
+    categoria: "Antigo Testamento",
+    pergunta:
+      "Quem foi lançado na cova dos leões por se recusar a adorar a imagem do rei?",
+    opcoes: ["Daniel", "Elias", "José"],
     correta: 0,
-    referencia: "Jeremias 29:11",
+    referencia: "Daniel 6:16",
+    explicacao:
+      "Daniel foi lançado na cova dos leões após se recusar a adorar uma imagem do rei, mas foi salvo por Deus.",
   },
   {
-    pergunta: "Qual promessa Jesus fez em João 14:3?",
-    opcoes: [
-      "Preparar um lugar para nós no céu",
-      "Dar vida fácil na terra",
-      "Responder todas as perguntas",
-    ],
+    categoria: "Novo Testamento",
+    pergunta: "Qual apóstolo negou Jesus três vezes antes do amanhecer?",
+    opcoes: ["Pedro", "João", "Tiago"],
     correta: 0,
-    referencia: "João 14:3",
+    referencia: "Mateus 26:69-75",
+    explicacao:
+      "Pedro negou Jesus três vezes, conforme predito por Jesus, mas se arrependeu depois da ressurreição.",
   },
   {
-    pergunta: "O que Filipenses 4:19 promete sobre as necessidades?",
-    opcoes: [
-      "Deus suprirá todas elas",
-      "Devemos resolver sozinhos",
-      "São consequência do pecado",
-    ],
-    correta: 0,
-    referencia: "Filipenses 4:19",
+    categoria: "Antigo Testamento",
+    pergunta: "Quem foi o primeiro rei de Israel?",
+    opcoes: ["Davi", "Saul", "Salomão"],
+    correta: 1,
+    referencia: "1 Samuel 10:1",
+    explicacao:
+      "Saul foi o primeiro rei de Israel, ungido por Samuel conforme a vontade de Deus.",
   },
+  // Adicione mais perguntas conforme necessário
 ];
 
 let perguntaAtual = 0;
 let pontuacao = 0;
+let nivel = 1;
+
+document.addEventListener("DOMContentLoaded", () => {
+  const somAcerto = document.getElementById("som-acerto");
+  const somVitoria = document.getElementById("som-vitoria");
+  iniciarQuiz();
+});
 
 function iniciarQuiz() {
   document.getElementById("feedback").style.display = "none";
@@ -214,14 +221,13 @@ function iniciarQuiz() {
 
 function mostrarPergunta() {
   const quest = perguntas[perguntaAtual];
+  document.getElementById(
+    "pergunta"
+  ).innerHTML = `${quest.pergunta} <br><small>${quest.referencia}</small>`;
+  document.getElementById(
+    "categoria"
+  ).textContent = `Categoria: ${quest.categoria}`;
 
-  // Atualizar pergunta
-  document.getElementById("pergunta").innerHTML = `
-        ${quest.pergunta} <br>
-        <small>${quest.referencia}</small>
-    `;
-
-  // Criar opções
   const opcoesDiv = document.getElementById("opcoes");
   opcoesDiv.innerHTML = "";
 
@@ -233,7 +239,6 @@ function mostrarPergunta() {
     opcoesDiv.appendChild(botao);
   });
 
-  // Atualizar progresso
   document.getElementById("barra-progresso").style.width = `${
     (perguntaAtual / perguntas.length) * 100
   }%`;
@@ -247,10 +252,10 @@ function verificarResposta(resposta) {
   const somIncorreto = document.getElementById("som-incorreto");
 
   opcoes.forEach((opcao, index) => {
-    opcao.style.pointerEvents = "none"; // Desativar cliques
+    opcao.style.pointerEvents = "none";
     if (index === quest.correta) {
       opcao.classList.add("correta");
-    } else if (index === resposta && index !== quest.correta) {
+    } else if (index === resposta) {
       opcao.classList.add("errada");
     }
   });
@@ -260,6 +265,7 @@ function verificarResposta(resposta) {
     somCorreto.play();
   } else {
     somIncorreto.play();
+    document.getElementById("explicacao").textContent = quest.explicacao;
   }
 
   document.getElementById("feedback").style.display = "block";
@@ -277,15 +283,18 @@ function proximaPergunta() {
 }
 
 function finalizarQuiz() {
+  localStorage.setItem(
+    "melhorPontuacao",
+    Math.max(pontuacao, Number(localStorage.getItem("melhorPontuacao")) || 0)
+  );
   document.getElementById("quiz-container").innerHTML = `
-        <div class="resultado-final">
-            <h3>🎉 Quiz Concluído!</h3>
-            <p>Sua pontuação: ${pontuacao}/${perguntas.length}</p>
-            <button onclick="reiniciarQuiz()">🔁 Jogar Novamente</button>
-            <p class="versiculo">"Sejam fortes e corajosos. Não tenham medo... pois o Senhor, o seu Deus, os acompanhará." <br>
-            <em>(Josué 1:9)</em></p>
-        </div>
-    `;
+    <div class="resultado-final">
+      <h3>🎉 Quiz Concluído!</h3>
+      <p>Sua pontuação: ${pontuacao}/${perguntas.length}</p>
+      <p>Melhor pontuação: ${localStorage.getItem("melhorPontuacao")}</p>
+      <button onclick="reiniciarQuiz()">🔁 Jogar Novamente</button>
+    </div>
+  `;
 }
 
 function reiniciarQuiz() {
@@ -294,7 +303,6 @@ function reiniciarQuiz() {
   iniciarQuiz();
 }
 
-// Iniciar ao carregar
 document.addEventListener("DOMContentLoaded", iniciarQuiz);
 
 // Exemplo: Jogo da Memória

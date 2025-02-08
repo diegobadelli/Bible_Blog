@@ -802,6 +802,7 @@ button {
   cursor: pointer;
   transition: all 0.3s;
   text-align: left;
+  color: black;
 }
 
 .opcao:hover:not(.correta):not(.errada) {

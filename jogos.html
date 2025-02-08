@@ -12,89 +12,90 @@
 <body class="pagina-jogos">
     <!-- Cabeçalho -->
     <header>
-        <h1>📖 Histórias Bíblicas</h1>
-        <span class="menu-icon" onclick="toggleMenu()">☰</span>
-        <nav id="navbar">
+        <h1>🎮 Jogos Bíblicos para crianças</h1>
+        <nav>
             <a href="index.html">Home</a>
             <a href="historias.html">Histórias</a>
             <a href="jogos.html">Jogos</a>
         </nav>
     </header>
-    <header>
 
-        <main class="container-jogos">
-            <!-- Jogo 1: Quebra-Cabeça da Arca de Noé -->
-            <section class="card-jogo">
-                <h2>🧩 Quebra-Cabeça da Arca de Noé</h2>
-                <div class="dificuldade">
-                    <button onclick="mudarDificuldade(4)">Fácil (2x2)</button>
-                    <button onclick="mudarDificuldade(9)">Médio (3x3)</button>
-                    <button onclick="mudarDificuldade(16)">Difícil (4x4)</button>
+    <main class="container-jogos">
+        <!-- Jogo 1: Quebra-Cabeça da Arca de Noé -->
+        <section class="card-jogo">
+            <h2>🧩 Quebra-Cabeça da Arca de Noé</h2>
+            <div class="dificuldade">
+                <button onclick="mudarDificuldade(4)">Fácil (2x2)</button>
+                <button onclick="mudarDificuldade(9)">Médio (3x3)</button>
+                <button onclick="mudarDificuldade(16)">Difícil (4x4)</button>
+            </div>
+            <div class="jogo-container">
+                <div class="info-jogo">
+                    <span>⏳ Tempo: <span id="tempo">00:00</span></span>
+                    <span>🏆 Melhor: <span id="melhor-tempo">--:--</span></span>
                 </div>
-                <div class="jogo-container">
-                    <div class="info-jogo">
-                        <span>⏳ Tempo: <span id="tempo">00:00</span></span>
-                        <span>🏆 Melhor: <span id="melhor-tempo">--:--</span></span>
-                    </div>
-                    <div class="pecas-container"></div>
-                    <div class="area-montagem"></div>
-                    <div class="controles">
-                        <button class="botao-jogar" onclick="reiniciarJogo()">↻ Recomeçar</button>
-                        <audio id="som-acerto" src="assets/sounds/acerto.mp3"></audio>
-                        <audio id="som-vitoria" src="assets/sounds/vitoria.mp3"></audio>
-                        <p id="mensagem"></p>
-                    </div>
+                <div class="pecas-container"></div>
+                <div class="area-montagem"></div>
+                <div class="controles">
+                    <button class="botao-jogar" onclick="reiniciarJogo()">↻ Recomeçar</button>
+                    <audio id="som-acerto" src="assets/sounds/acerto.mp3"></audio>
+                    <audio id="som-vitoria" src="assets/sounds/vitoria.mp3"></audio>
+                    <p id="mensagem"></p>
                 </div>
-            </section>
+            </div>
+        </section>
 
-            <!-- Jogo 2: Quiz das Promessas -->
-            <section class="card-jogo">
-                <h2>📜 Quiz das Promessas de Deus</h2>
-                <div class="quiz-container">
-                    <div class="cabecalho-quiz">
-                        <div class="progresso">
-                            <div class="barra-progresso" id="barra-progresso"></div>
-                        </div>
-                        <p class="contador">🎯 <span id="pontuacao">0</span> / 5</p>
+        <!-- Jogo 2: Quiz das Promessas -->
+        <section class="card-jogo">
+            <h2>📜 Quiz das Promessas de Deus</h2>
+            <div class="quiz-container">
+                <div class="cabecalho-quiz">
+                    <p class="categoria" id="categoria"></p> <!-- Exibe a categoria da pergunta -->
+                    <div class="progresso">
+                        <div class="barra-progresso" id="barra-progresso"></div>
                     </div>
-
-                    <div class="pergunta-container">
-                        <p class="pergunta" id="pergunta"></p>
-                        <div class="opcoes" id="opcoes"></div>
-                    </div>
-
-                    <div class="feedback" id="feedback">
-                        <audio id="som-correto" src="assets/sounds/correto.mp3"></audio>
-                        <audio id="som-incorreto" src="assets/sounds/incorreto.mp3"></audio>
-                        <button class="botao-proxima" onclick="proximaPergunta()">Próxima Pergunta →</button>
-                    </div>
+                    <p class="contador">🎯 <span id="pontuacao">0</span> / 5</p>
                 </div>
-            </section>
 
-            <!-- Jogo 3: Memória Bíblica -->
-            <section class="card-jogo">
-                <h2>🎴 Memória dos Personagens</h2>
-                <div class="jogo-container" id="jogo-memoria">
-                    <div class="grade-memoria"></div>
-                    <p class="pontuacao">Acertos: <span id="acertos">0</span></p>
+                <div class="pergunta-container">
+                    <p class="pergunta" id="pergunta"></p>
+                    <div class="opcoes" id="opcoes"></div>
                 </div>
-            </section>
 
-            <!-- Jogo 4: Caça-Palavras da Criação -->
-            <section class="card-jogo">
-                <h2>🔍 Caça-Palavras da Criação</h2>
-                <div class="jogo-container" id="caca-palavras">
-                    <table class="tabela-palavras"></table>
-                    <p class="dica">Encontre: SOL, LUA, MAR, ÁRVORE...</p>
+                <div class="feedback" id="feedback">
+                    <p id="explicacao"></p> <!-- Exibe a explicação quando o jogador errar -->
+                    <audio id="som-correto" src="assets/sounds/correto.mp3"></audio>
+                    <audio id="som-incorreto" src="assets/sounds/incorreto.mp3"></audio>
+                    <button class="botao-proxima" onclick="proximaPergunta()">Próxima Pergunta →</button>
                 </div>
-            </section>
-        </main>
+            </div>
+        </section>
 
-        <footer>
-            <p>© 2024 Blog da Bíblia para Crianças. Todos os direitos reservados.</p>
-        </footer>
 
-        <script src="js/jogos.js"></script>
+        <!-- Jogo 3: Memória Bíblica -->
+        <section class="card-jogo">
+            <h2>🎴 Memória dos Personagens</h2>
+            <div class="jogo-container" id="jogo-memoria">
+                <div class="grade-memoria"></div>
+                <p class="pontuacao">Acertos: <span id="acertos">0</span></p>
+            </div>
+        </section>
+
+        <!-- Jogo 4: Caça-Palavras da Criação -->
+        <section class="card-jogo">
+            <h2>🔍 Caça-Palavras da Criação</h2>
+            <div class="jogo-container" id="caca-palavras">
+                <table class="tabela-palavras"></table>
+                <p class="dica">Encontre: SOL, LUA, MAR, ÁRVORE...</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2024 Blog da Bíblia para Crianças. Todos os direitos reservados.</p>
+    </footer>
+
+    <script src="js/jogos.js"></script>
 </body>
 
 </html>
