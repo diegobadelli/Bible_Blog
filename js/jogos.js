@@ -161,8 +161,7 @@ const perguntas = [
     opcoes: ["Moisés", "Noé", "Abraão"],
     correta: 1,
     referencia: "Gênesis 6:14",
-    explicacao:
-      "Deus ordenou que Noé construísse a arca para salvar sua família e os animais do dilúvio.",
+    explicacao: "Deus ordenou que Noé construísse a arca para salvar sua família e os animais do dilúvio."
   },
   {
     categoria: "Novo Testamento",
@@ -170,36 +169,7 @@ const perguntas = [
     opcoes: ["7", "10", "12"],
     correta: 2,
     referencia: "Mateus 10:2-4",
-    explicacao:
-      "Jesus escolheu 12 discípulos para segui-lo e espalhar seus ensinamentos.",
-  },
-  {
-    categoria: "Antigo Testamento",
-    pergunta:
-      "Quem foi lançado na cova dos leões por se recusar a adorar a imagem do rei?",
-    opcoes: ["Daniel", "Elias", "José"],
-    correta: 0,
-    referencia: "Daniel 6:16",
-    explicacao:
-      "Daniel foi lançado na cova dos leões após se recusar a adorar uma imagem do rei, mas foi salvo por Deus.",
-  },
-  {
-    categoria: "Novo Testamento",
-    pergunta: "Qual apóstolo negou Jesus três vezes antes do amanhecer?",
-    opcoes: ["Pedro", "João", "Tiago"],
-    correta: 0,
-    referencia: "Mateus 26:69-75",
-    explicacao:
-      "Pedro negou Jesus três vezes, conforme predito por Jesus, mas se arrependeu depois da ressurreição.",
-  },
-  {
-    categoria: "Antigo Testamento",
-    pergunta: "Quem foi o primeiro rei de Israel?",
-    opcoes: ["Davi", "Saul", "Salomão"],
-    correta: 1,
-    referencia: "1 Samuel 10:1",
-    explicacao:
-      "Saul foi o primeiro rei de Israel, ungido por Samuel conforme a vontade de Deus.",
+    explicacao: "Jesus escolheu 12 discípulos para segui-lo e espalhar seus ensinamentos."
   },
   // Adicione mais perguntas conforme necessário
 ];
@@ -221,12 +191,8 @@ function iniciarQuiz() {
 
 function mostrarPergunta() {
   const quest = perguntas[perguntaAtual];
-  document.getElementById(
-    "pergunta"
-  ).innerHTML = `${quest.pergunta} <br><small>${quest.referencia}</small>`;
-  document.getElementById(
-    "categoria"
-  ).textContent = `Categoria: ${quest.categoria}`;
+  document.getElementById("pergunta").innerHTML = `${quest.pergunta} <br><small>${quest.referencia}</small>`;
+  document.getElementById("categoria").textContent = `Categoria: ${quest.categoria}`;
 
   const opcoesDiv = document.getElementById("opcoes");
   opcoesDiv.innerHTML = "";
@@ -239,13 +205,12 @@ function mostrarPergunta() {
     opcoesDiv.appendChild(botao);
   });
 
-  document.getElementById("barra-progresso").style.width = `${
-    (perguntaAtual / perguntas.length) * 100
-  }%`;
+  document.getElementById("barra-progresso").style.width = `${(perguntaAtual / perguntas.length) * 100}%`;
   document.getElementById("pontuacao").textContent = pontuacao;
 }
 
 function verificarResposta(resposta) {
+  const ultimaPergunta = perguntaAtual === perguntas.length - 1;
   const quest = perguntas[perguntaAtual];
   const opcoes = document.querySelectorAll(".opcao");
   const somCorreto = document.getElementById("som-correto");
@@ -269,7 +234,11 @@ function verificarResposta(resposta) {
   }
 
   document.getElementById("feedback").style.display = "block";
-  document.querySelector(".botao-proxima").style.display = "block";
+  if (ultimaPergunta) {
+    setTimeout(finalizarQuiz, 1000);
+  } else {
+    document.querySelector(".botao-proxima").style.display = "block";
+  }
 }
 
 function proximaPergunta() {
@@ -283,10 +252,7 @@ function proximaPergunta() {
 }
 
 function finalizarQuiz() {
-  localStorage.setItem(
-    "melhorPontuacao",
-    Math.max(pontuacao, Number(localStorage.getItem("melhorPontuacao")) || 0)
-  );
+  localStorage.setItem("melhorPontuacao", Math.max(pontuacao, Number(localStorage.getItem("melhorPontuacao")) || 0));
   document.getElementById("quiz-container").innerHTML = `
     <div class="resultado-final">
       <h3>🎉 Quiz Concluído!</h3>
@@ -302,6 +268,7 @@ function reiniciarQuiz() {
   pontuacao = 0;
   iniciarQuiz();
 }
+
 
 document.addEventListener("DOMContentLoaded", iniciarQuiz);
 
