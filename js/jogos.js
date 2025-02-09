@@ -171,6 +171,33 @@ const perguntas = [
     referencia: "Mateus 10:2-4",
     explicacao: "Jesus escolheu 12 discípulos para segui-lo e espalhar seus ensinamentos."
   },
+    {
+    categoria: "Antigo Testamento",
+    pergunta: "Quem foi lançado na cova dos leões por se recusar a adorar a imagem do rei?",
+    opcoes: ["Daniel", "Elias", "José"],
+    correta: 0,
+    referencia: "Daniel 6:16",
+    explicacao:
+      "Daniel foi lançado na cova dos leões após se recusar a adorar uma imagem do rei, mas foi salvo por Deus.",
+  },
+  {
+    categoria: "Novo Testamento",
+    pergunta: "Qual apóstolo negou Jesus três vezes antes do amanhecer?",
+    opcoes: ["Pedro", "João", "Tiago"],
+    correta: 0,
+    referencia: "Mateus 26:69-75",
+    explicacao:
+      "Pedro negou Jesus três vezes, conforme predito por Jesus, mas se arrependeu depois da ressurreição.",
+  },
+  {
+    categoria: "Antigo Testamento",
+    pergunta: "Quem foi o primeiro rei de Israel?",
+    opcoes: ["Davi", "Saul", "Salomão"],
+    correta: 1,
+    referencia: "1 Samuel 10:1",
+    explicacao:
+      "Saul foi o primeiro rei de Israel, ungido por Samuel conforme a vontade de Deus.",
+  }
   // Adicione mais perguntas conforme necessário
 ];
 
