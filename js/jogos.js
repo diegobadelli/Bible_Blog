@@ -280,7 +280,7 @@ function proximaPergunta() {
 
 function finalizarQuiz() {
   localStorage.setItem("melhorPontuacao", Math.max(pontuacao, Number(localStorage.getItem("melhorPontuacao")) || 0));
-  document.getElementById("quiz-container").innerHTML = `
+  document.getElementById(".quiz-container").innerHTML = `
     <div class="resultado-final">
       <h3>🎉 Quiz Concluído!</h3>
       <p>Sua pontuação: ${pontuacao}/${perguntas.length}</p>
