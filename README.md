@@ -1,7 +1,5 @@
 # Bíblia para Crianças
 
-![Logo](https://bibliaparacriancas.vercel.app/logo.png)
-
 Um site educativo com histórias bíblicas para crianças, apresentado de forma acessível e interativa.
 
 ## 🚀 Tecnologias Utilizadas
