@@ -339,58 +339,90 @@ function virarCarta(event) {
 }
 
 
-// Caça Palavras
 document.addEventListener("DOMContentLoaded", () => {
-  const palavras = ["SOL", "LUA", "MAR", "ÁRVORE", "ESTRELA", "TERRA", "HOMEM", "ANIMAL"];
-  const tamanhoGrade = 10; // Tamanho da grade (10x10)
+  const palavras = ["ESTRELA", "ÁRVORE", "TERRA", "ANIMAL", "HOMEM", "LUA", "MAR", "SOL"]
+    .sort((a, b) => b.length - a.length); // Ordena do maior para menor
+  const tamanhoGrade = 12;
   const tabela = document.querySelector(".tabela-palavras");
+  const container = document.querySelector(".container"); // Adicionando um container para o botão
+  let grade = [];
+  let ocupado = [];
 
-  // Inicializa a grade com letras aleatórias
-  let grade = Array.from({ length: tamanhoGrade }, () =>
-    Array.from({ length: tamanhoGrade }, () => String.fromCharCode(65 + Math.floor(Math.random() * 26)))
-  );
+  function inicializarGrade() {
+    tabela.innerHTML = ""; // Limpa a tabela
+    grade = Array.from({ length: tamanhoGrade }, () =>
+      Array.from({ length: tamanhoGrade }, () => String.fromCharCode(65 + Math.floor(Math.random() * 26)))
+    );
+    ocupado = Array.from({ length: tamanhoGrade }, () => Array(tamanhoGrade).fill(false));
 
-  // Insere as palavras na grade
-  palavras.forEach((palavra) => {
-    let direcao = Math.random() < 0.5 ? "horizontal" : "vertical"; // Escolhe direção aleatória
-    let linha, coluna;
-
-    if (direcao === "horizontal") {
-      linha = Math.floor(Math.random() * tamanhoGrade);
-      coluna = Math.floor(Math.random() * (tamanhoGrade - palavra.length));
-      for (let i = 0; i < palavra.length; i++) {
-        grade[linha][coluna + i] = palavra[i];
+    // Coloca as palavras na grade
+    palavras.forEach(palavra => {
+      if (!colocarPalavra(palavra)) {
+        console.error(`Não foi possível colocar: ${palavra}`);
       }
-    } else {
-      coluna = Math.floor(Math.random() * tamanhoGrade);
-      linha = Math.floor(Math.random() * (tamanhoGrade - palavra.length));
+    });
+
+    // Renderiza a tabela
+    grade.forEach((linha, i) => {
+      const tr = document.createElement("tr");
+      linha.forEach((letra, j) => {
+        const td = document.createElement("td");
+        td.textContent = letra;
+        td.dataset.linha = i;
+        td.dataset.coluna = j;
+        tr.appendChild(td);
+      });
+      tabela.appendChild(tr);
+    });
+  }
+
+  function colocarPalavra(palavra) {
+    const direcoes = ["horizontal", "vertical"];
+    for (let tentativa = 0; tentativa < 100; tentativa++) {
+      const direcao = direcoes[Math.floor(Math.random() * direcoes.length)];
+      let linha, coluna;
+
+      if (direcao === "horizontal") {
+        linha = Math.floor(Math.random() * tamanhoGrade);
+        coluna = Math.floor(Math.random() * (tamanhoGrade - palavra.length + 1));
+      } else {
+        coluna = Math.floor(Math.random() * tamanhoGrade);
+        linha = Math.floor(Math.random() * (tamanhoGrade - palavra.length + 1));
+      }
+
+      let podeColocar = true;
       for (let i = 0; i < palavra.length; i++) {
-        grade[linha + i][coluna] = palavra[i];
+        const linhaAtual = direcao === "horizontal" ? linha : linha + i;
+        const colunaAtual = direcao === "horizontal" ? coluna + i : coluna;
+
+        if (ocupado[linhaAtual][colunaAtual] && grade[linhaAtual][colunaAtual] !== palavra[i]) {
+          podeColocar = false;
+          break;
+        }
+      }
+
+      if (podeColocar) {
+        for (let i = 0; i < palavra.length; i++) {
+          const linhaAtual = direcao === "horizontal" ? linha : linha + i;
+          const colunaAtual = direcao === "horizontal" ? coluna + i : coluna;
+
+          grade[linhaAtual][colunaAtual] = palavra[i];
+          ocupado[linhaAtual][colunaAtual] = true;
+        }
+        return true;
       }
     }
-  });
+    return false;
+  }
 
-  // Renderiza a grade na tabela
-  grade.forEach((linha, i) => {
-    const tr = document.createElement("tr");
-    linha.forEach((letra, j) => {
-      const td = document.createElement("td");
-      td.textContent = letra;
-      td.dataset.linha = i;
-      td.dataset.coluna = j;
-      tr.appendChild(td);
-    });
-    tabela.appendChild(tr);
-  });
-
-  // Lógica de seleção de palavras
+  let palavrasEncontradas = [];
   let selecionados = [];
+
   tabela.addEventListener("click", (e) => {
     if (e.target.tagName === "TD") {
       const linha = parseInt(e.target.dataset.linha);
       const coluna = parseInt(e.target.dataset.coluna);
 
-      // Adiciona ou remove a célula da lista de selecionados
       const index = selecionados.findIndex((celula) => celula.linha === linha && celula.coluna === coluna);
       if (index === -1) {
         selecionados.push({ linha, coluna });
@@ -400,19 +432,15 @@ document.addEventListener("DOMContentLoaded", () => {
         e.target.classList.remove("selecionado");
       }
 
-      // Verifica se as células selecionadas formam uma palavra
       verificarPalavra(selecionados);
     }
   });
 
-  // Função para verificar se as células selecionadas formam uma palavra
   function verificarPalavra(celulas) {
-    if (celulas.length < 2) return; // Precisa de pelo menos 2 letras
+    if (celulas.length < 2) return;
 
-    // Ordena as células por linha e coluna
     celulas.sort((a, b) => a.linha - b.linha || a.coluna - b.coluna);
 
-    // Verifica se as células estão em linha reta (horizontal ou vertical)
     const direcao = celulas[0].linha === celulas[1].linha ? "horizontal" : "vertical";
     const valido = celulas.every((celula, i, arr) => {
       if (direcao === "horizontal") {
@@ -424,27 +452,53 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (valido) {
       const palavra = celulas.map((celula) => grade[celula.linha][celula.coluna]).join("");
-      if (palavras.includes(palavra)) {
-        // Destaca as células da palavra encontrada
+      if (palavras.includes(palavra) && !palavrasEncontradas.includes(palavra)) {
+        palavrasEncontradas.push(palavra);
         celulas.forEach((celula) => {
           const td = tabela.rows[celula.linha].cells[celula.coluna];
           td.classList.add("encontrado");
         });
 
-        // Adiciona a palavra à lista de palavras encontradas
         adicionarPalavraEncontrada(palavra);
-
-        // Limpa a seleção
         selecionados = [];
+
+        if (palavrasEncontradas.length === palavras.length) {
+          mostrarBotaoReiniciar();
+        }
       }
     }
   }
 
-  // Função para adicionar a palavra encontrada à lista
   function adicionarPalavraEncontrada(palavra) {
     const listaPalavras = document.getElementById("lista-palavras");
     const item = document.createElement("li");
     item.textContent = palavra;
     listaPalavras.appendChild(item);
   }
+  function mostrarBotaoReiniciar() {
+    let botao = document.getElementById("botao-reiniciar");
+    let container = document.getElementById("botao-container"); // Novo container correto
+
+    if (!botao) {
+      botao = document.createElement("button");
+      botao.id = "botao-reiniciar";
+      botao.textContent = "Reiniciar Jogo";
+      botao.addEventListener("click", reiniciarJogo);
+      container.appendChild(botao); // Agora o botão será adicionado no local correto
+    }
+    botao.style.display = "block";
+  }
+
+
+  function reiniciarJogo() {
+    palavrasEncontradas = [];
+    selecionados = [];
+    const listaPalavras = document.getElementById("lista-palavras");
+    listaPalavras.innerHTML = "";
+    let botao = document.getElementById("botao-reiniciar");
+    if (botao) botao.style.display = "none";
+    inicializarGrade();
+  }
+
+  inicializarGrade();
 });
