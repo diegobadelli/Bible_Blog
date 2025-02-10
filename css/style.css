@@ -17,9 +17,11 @@ body {
 /* Navbar moderna */
 /* Header Moderno e Compacto */
 header {
-  background: linear-gradient(45deg, #3498db, #2980b9); /* Azul mais intenso */
+  background: linear-gradient(45deg, #3498db, #2980b9);
+  /* Azul mais intenso */
   padding: 0 1rem;
-  height: 60px; /* Header mais compacto */
+  height: 60px;
+  /* Header mais compacto */
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -63,11 +65,12 @@ nav a:hover {
 
 /* Versão Mobile */
 @media (max-width: 768px) {
+
   /* Exibe o ícone do menu */
   .menu-icon {
     display: block;
   }
-  
+
   /* Esconde a navegação padrão */
   nav {
     display: none;
@@ -79,12 +82,12 @@ nav a:hover {
     width: 100%;
     padding: 0.5rem 0;
   }
-  
+
   nav a {
     padding: 0.5rem;
     font-size: 1.1rem;
   }
-  
+
   /* Exibe o menu quando ativo */
   nav.active {
     display: flex;
@@ -171,7 +174,9 @@ nav a:hover {
 
 
 /* Botões */
-.botao-leia, .botao-compartilhar, .botao-gerar {
+.botao-leia,
+.botao-compartilhar,
+.botao-gerar {
   background: #ff80ab;
   color: white;
   border: none;
@@ -181,7 +186,9 @@ nav a:hover {
   transition: transform 0.3s ease, background 0.3s ease;
 }
 
-.botao-leia:hover, .botao-compartilhar:hover, .botao-gerar:hover {
+.botao-leia:hover,
+.botao-compartilhar:hover,
+.botao-gerar:hover {
   transform: scale(1.1);
   background: #f06292;
 }
@@ -759,83 +766,83 @@ button {
 
 /* Estilos do Quiz */
 .quiz-container {
-    background: #f8f9fa;
-    border-radius: 15px;
-    padding: 2rem;
+  background: #f8f9fa;
+  border-radius: 15px;
+  padding: 2rem;
 }
 
 .cabecalho-quiz {
-    margin-bottom: 1.5rem;
+  margin-bottom: 1.5rem;
 }
 
 .progresso {
-    height: 10px;
-    background: #e9ecef;
-    border-radius: 5px;
-    overflow: hidden;
+  height: 10px;
+  background: #e9ecef;
+  border-radius: 5px;
+  overflow: hidden;
 }
 
 .barra-progresso {
-    height: 100%;
-    background: #2ecc71;
-    width: 0%;
-    transition: width 0.5s ease;
+  height: 100%;
+  background: #2ecc71;
+  width: 0%;
+  transition: width 0.5s ease;
 }
 
 .pergunta {
-    font-size: 1.2rem;
-    margin-bottom: 1.5rem;
-    color: #2c3e50;
-    font-weight: 500;
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
+  color: #2c3e50;
+  font-weight: 500;
 }
 
 .opcoes {
-    display: grid;
-    gap: 10px;
+  display: grid;
+  gap: 10px;
 }
 
 .opcao {
-    background: white;
-    border: 2px solid #3498db;
-    border-radius: 8px;
-    padding: 1rem;
-    cursor: pointer;
-    transition: all 0.3s;
-    text-align: left;
-    color: black;
+  background: white;
+  border: 2px solid #3498db;
+  border-radius: 8px;
+  padding: 1rem;
+  cursor: pointer;
+  transition: all 0.3s;
+  text-align: left;
+  color: black;
 }
 
 .opcao:hover:not(.correta):not(.errada) {
-    transform: translateY(-2px);
-    box-shadow: 0 3px 10px rgba(52, 152, 219, 0.2);
+  transform: translateY(-2px);
+  box-shadow: 0 3px 10px rgba(52, 152, 219, 0.2);
 }
 
 .opcao.correta {
-    background: #2ecc71 !important;
-    border-color: #27ae60 !important;
-    color: white;
+  background: #2ecc71 !important;
+  border-color: #27ae60 !important;
+  color: white;
 }
 
 .opcao.errada {
-    background: #e74c3c !important;
-    border-color: #c0392b !important;
-    color: white;
+  background: #e74c3c !important;
+  border-color: #c0392b !important;
+  color: white;
 }
 
 .botao-proxima {
-    background: #3498db;
-    color: white;
-    border: none;
-    padding: 0.8rem 1.5rem;
-    border-radius: 25px;
-    cursor: pointer;
-    margin-top: 1rem;
-    display: none;
+  background: #3498db;
+  color: white;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 25px;
+  cursor: pointer;
+  margin-top: 1rem;
+  display: none;
 }
 
 .feedback {
-    text-align: center;
-    margin-top: 1.5rem;
+  text-align: center;
+  margin-top: 1.5rem;
 }
 
 
@@ -861,4 +868,58 @@ button {
   text-align: center;
   font-style: italic;
   color: #555;
+}
+
+.tabela-palavras td.encontrado {
+  background-color: #a8ffa8;
+  /* Verde claro para células encontradas */
+}
+
+.palavras-encontradas {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.palavras-encontradas ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.palavras-encontradas li {
+  display: inline-block;
+  margin: 5px;
+  padding: 5px 10px;
+  background-color: #f0f0f0;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+.controles {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.controles button {
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+.tabela-palavras td.encontrado {
+  background-color: #a8ffa8;
+  animation: pulse 0.5s ease;
+}
+
+#contador {
+  color: #4CAF50;
+  font-weight: bold;
 }

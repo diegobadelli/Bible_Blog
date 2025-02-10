@@ -339,6 +339,7 @@ function virarCarta(event) {
 }
 
 
+// Caça Palavras
 document.addEventListener("DOMContentLoaded", () => {
   const palavras = ["SOL", "LUA", "MAR", "ÁRVORE", "ESTRELA", "TERRA", "HOMEM", "ANIMAL"];
   const tamanhoGrade = 10; // Tamanho da grade (10x10)
@@ -346,91 +347,104 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Inicializa a grade com letras aleatórias
   let grade = Array.from({ length: tamanhoGrade }, () =>
-      Array.from({ length: tamanhoGrade }, () => String.fromCharCode(65 + Math.floor(Math.random() * 26)))
+    Array.from({ length: tamanhoGrade }, () => String.fromCharCode(65 + Math.floor(Math.random() * 26)))
   );
 
   // Insere as palavras na grade
   palavras.forEach((palavra) => {
-      let direcao = Math.random() < 0.5 ? "horizontal" : "vertical"; // Escolhe direção aleatória
-      let linha, coluna;
+    let direcao = Math.random() < 0.5 ? "horizontal" : "vertical"; // Escolhe direção aleatória
+    let linha, coluna;
 
-      if (direcao === "horizontal") {
-          linha = Math.floor(Math.random() * tamanhoGrade);
-          coluna = Math.floor(Math.random() * (tamanhoGrade - palavra.length));
-          for (let i = 0; i < palavra.length; i++) {
-              grade[linha][coluna + i] = palavra[i];
-          }
-      } else {
-          coluna = Math.floor(Math.random() * tamanhoGrade);
-          linha = Math.floor(Math.random() * (tamanhoGrade - palavra.length));
-          for (let i = 0; i < palavra.length; i++) {
-              grade[linha + i][coluna] = palavra[i];
-          }
+    if (direcao === "horizontal") {
+      linha = Math.floor(Math.random() * tamanhoGrade);
+      coluna = Math.floor(Math.random() * (tamanhoGrade - palavra.length));
+      for (let i = 0; i < palavra.length; i++) {
+        grade[linha][coluna + i] = palavra[i];
       }
+    } else {
+      coluna = Math.floor(Math.random() * tamanhoGrade);
+      linha = Math.floor(Math.random() * (tamanhoGrade - palavra.length));
+      for (let i = 0; i < palavra.length; i++) {
+        grade[linha + i][coluna] = palavra[i];
+      }
+    }
   });
 
   // Renderiza a grade na tabela
   grade.forEach((linha, i) => {
-      const tr = document.createElement("tr");
-      linha.forEach((letra, j) => {
-          const td = document.createElement("td");
-          td.textContent = letra;
-          td.dataset.linha = i;
-          td.dataset.coluna = j;
-          tr.appendChild(td);
-      });
-      tabela.appendChild(tr);
+    const tr = document.createElement("tr");
+    linha.forEach((letra, j) => {
+      const td = document.createElement("td");
+      td.textContent = letra;
+      td.dataset.linha = i;
+      td.dataset.coluna = j;
+      tr.appendChild(td);
+    });
+    tabela.appendChild(tr);
   });
 
   // Lógica de seleção de palavras
   let selecionados = [];
   tabela.addEventListener("click", (e) => {
-      if (e.target.tagName === "TD") {
-          const linha = parseInt(e.target.dataset.linha);
-          const coluna = parseInt(e.target.dataset.coluna);
+    if (e.target.tagName === "TD") {
+      const linha = parseInt(e.target.dataset.linha);
+      const coluna = parseInt(e.target.dataset.coluna);
 
-          // Adiciona ou remove a célula da lista de selecionados
-          const index = selecionados.findIndex((celula) => celula.linha === linha && celula.coluna === coluna);
-          if (index === -1) {
-              selecionados.push({ linha, coluna });
-              e.target.classList.add("selecionado");
-          } else {
-              selecionados.splice(index, 1);
-              e.target.classList.remove("selecionado");
-          }
-
-          // Verifica se as células selecionadas formam uma palavra
-          verificarPalavra(selecionados);
+      // Adiciona ou remove a célula da lista de selecionados
+      const index = selecionados.findIndex((celula) => celula.linha === linha && celula.coluna === coluna);
+      if (index === -1) {
+        selecionados.push({ linha, coluna });
+        e.target.classList.add("selecionado");
+      } else {
+        selecionados.splice(index, 1);
+        e.target.classList.remove("selecionado");
       }
+
+      // Verifica se as células selecionadas formam uma palavra
+      verificarPalavra(selecionados);
+    }
   });
 
   // Função para verificar se as células selecionadas formam uma palavra
   function verificarPalavra(celulas) {
-      if (celulas.length < 2) return; // Precisa de pelo menos 2 letras
+    if (celulas.length < 2) return; // Precisa de pelo menos 2 letras
 
-      // Ordena as células por linha e coluna
-      celulas.sort((a, b) => a.linha - b.linha || a.coluna - b.coluna);
+    // Ordena as células por linha e coluna
+    celulas.sort((a, b) => a.linha - b.linha || a.coluna - b.coluna);
 
-      // Verifica se as células estão em linha reta (horizontal ou vertical)
-      const direcao = celulas[0].linha === celulas[1].linha ? "horizontal" : "vertical";
-      const valido = celulas.every((celula, i, arr) => {
-          if (direcao === "horizontal") {
-              return celula.linha === arr[0].linha && celula.coluna === arr[0].coluna + i;
-          } else {
-              return celula.coluna === arr[0].coluna && celula.linha === arr[0].linha + i;
-          }
-      });
-
-      if (valido) {
-          const palavra = celulas.map((celula) => grade[celula.linha][celula.coluna]).join("");
-          if (palavras.includes(palavra)) {
-              alert(`Parabéns! Você encontrou a palavra: ${palavra}`);
-              celulas.forEach((celula) => {
-                  const td = tabela.rows[celula.linha].cells[celula.coluna];
-                  td.classList.add("encontrado");
-              });
-              selecionados = []; // Limpa a seleção
-          }
+    // Verifica se as células estão em linha reta (horizontal ou vertical)
+    const direcao = celulas[0].linha === celulas[1].linha ? "horizontal" : "vertical";
+    const valido = celulas.every((celula, i, arr) => {
+      if (direcao === "horizontal") {
+        return celula.linha === arr[0].linha && celula.coluna === arr[0].coluna + i;
+      } else {
+        return celula.coluna === arr[0].coluna && celula.linha === arr[0].linha + i;
       }
+    });
+
+    if (valido) {
+      const palavra = celulas.map((celula) => grade[celula.linha][celula.coluna]).join("");
+      if (palavras.includes(palavra)) {
+        // Destaca as células da palavra encontrada
+        celulas.forEach((celula) => {
+          const td = tabela.rows[celula.linha].cells[celula.coluna];
+          td.classList.add("encontrado");
+        });
+
+        // Adiciona a palavra à lista de palavras encontradas
+        adicionarPalavraEncontrada(palavra);
+
+        // Limpa a seleção
+        selecionados = [];
+      }
+    }
+  }
+
+  // Função para adicionar a palavra encontrada à lista
+  function adicionarPalavraEncontrada(palavra) {
+    const listaPalavras = document.getElementById("lista-palavras");
+    const item = document.createElement("li");
+    item.textContent = palavra;
+    listaPalavras.appendChild(item);
   }
 });
