@@ -48,7 +48,7 @@
         <!-- Jogo 2: Quiz das Promessas -->
         <section class="card-jogo">
             <h2>📜 Quiz das Promessas de Deus</h2>
-            <div class="quiz-container">
+            <div id="quiz-container" class="quiz-container">
                 <div class="cabecalho-quiz">
                     <p class="categoria" id="categoria"></p> <!-- Exibe a categoria da pergunta -->
                     <div class="progresso">
@@ -64,8 +64,8 @@
 
                 <div class="feedback" id="feedback">
                     <p id="explicacao"></p> <!-- Exibe a explicação quando o jogador errar -->
-                    <audio id="som-correto" src="assets/sounds/correto.mp3"></audio>
-                    <audio id="som-incorreto" src="assets/sounds/incorreto.mp3"></audio>
+                    <audio id="som-correto" src="assets/sounds/acerto.mp3"></audio>
+                    <audio id="som-incorreto" src="assets/sounds/vitoria.mp3"></audio>
                     <button class="botao-proxima" onclick="proximaPergunta()">Próxima Pergunta →</button>
                 </div>
             </div>
@@ -86,7 +86,7 @@
             <h2>🔍 Caça-Palavras da Criação</h2>
             <div class="jogo-container" id="caca-palavras">
                 <table class="tabela-palavras"></table>
-                <p class="dica">Encontre: SOL, LUA, MAR, ÁRVORE...</p>
+                <p class="dica">Encontre: SOL, LUA, MAR, ÁRVORE, ESTRELA, TERRA, HOMEM, ANIMAL</p>
             </div>
         </section>
     </main>

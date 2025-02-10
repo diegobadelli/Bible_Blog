@@ -759,81 +759,106 @@ button {
 
 /* Estilos do Quiz */
 .quiz-container {
-  background: #f8f9fa;
-  border-radius: 15px;
-  padding: 2rem;
+    background: #f8f9fa;
+    border-radius: 15px;
+    padding: 2rem;
 }
 
 .cabecalho-quiz {
-  margin-bottom: 1.5rem;
+    margin-bottom: 1.5rem;
 }
 
 .progresso {
-  height: 10px;
-  background: #e9ecef;
-  border-radius: 5px;
-  overflow: hidden;
+    height: 10px;
+    background: #e9ecef;
+    border-radius: 5px;
+    overflow: hidden;
 }
 
 .barra-progresso {
-  height: 100%;
-  background: #2ecc71;
-  width: 0%;
-  transition: width 0.5s ease;
+    height: 100%;
+    background: #2ecc71;
+    width: 0%;
+    transition: width 0.5s ease;
 }
 
 .pergunta {
-  font-size: 1.2rem;
-  margin-bottom: 1.5rem;
-  color: #2c3e50;
-  font-weight: 500;
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+    color: #2c3e50;
+    font-weight: 500;
 }
 
 .opcoes {
-  display: grid;
-  gap: 10px;
+    display: grid;
+    gap: 10px;
 }
 
 .opcao {
-  background: white;
-  border: 2px solid #3498db;
-  border-radius: 8px;
-  padding: 1rem;
-  cursor: pointer;
-  transition: all 0.3s;
-  text-align: left;
-  color: black;
+    background: white;
+    border: 2px solid #3498db;
+    border-radius: 8px;
+    padding: 1rem;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-align: left;
+    color: black;
 }
 
 .opcao:hover:not(.correta):not(.errada) {
-  transform: translateY(-2px);
-  box-shadow: 0 3px 10px rgba(52, 152, 219, 0.2);
+    transform: translateY(-2px);
+    box-shadow: 0 3px 10px rgba(52, 152, 219, 0.2);
 }
 
 .opcao.correta {
-  background: #2ecc71 !important;
-  border-color: #27ae60 !important;
-  color: white;
+    background: #2ecc71 !important;
+    border-color: #27ae60 !important;
+    color: white;
 }
 
 .opcao.errada {
-  background: #e74c3c !important;
-  border-color: #c0392b !important;
-  color: white;
+    background: #e74c3c !important;
+    border-color: #c0392b !important;
+    color: white;
 }
 
 .botao-proxima {
-  background: #3498db;
-  color: white;
-  border: none;
-  padding: 0.8rem 1.5rem;
-  border-radius: 25px;
-  cursor: pointer;
-  margin-top: 1rem;
-  display: none;
+    background: #3498db;
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 25px;
+    cursor: pointer;
+    margin-top: 1rem;
+    display: none;
 }
 
 .feedback {
+    text-align: center;
+    margin-top: 1.5rem;
+}
+
+
+/* Estilos do Caçã palavras */
+.tabela-palavras {
+  border-collapse: collapse;
+  margin: 20px auto;
+}
+
+.tabela-palavras td {
+  width: 30px;
+  height: 30px;
   text-align: center;
-  margin-top: 1.5rem;
+  border: 1px solid #ccc;
+  cursor: pointer;
+}
+
+.tabela-palavras td.selecionado {
+  background-color: #a8d8ff;
+}
+
+.dica {
+  text-align: center;
+  font-style: italic;
+  color: #555;
 }

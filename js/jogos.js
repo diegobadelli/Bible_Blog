@@ -171,14 +171,13 @@ const perguntas = [
     referencia: "Mateus 10:2-4",
     explicacao: "Jesus escolheu 12 discípulos para segui-lo e espalhar seus ensinamentos."
   },
-    {
+  {
     categoria: "Antigo Testamento",
     pergunta: "Quem foi lançado na cova dos leões por se recusar a adorar a imagem do rei?",
     opcoes: ["Daniel", "Elias", "José"],
     correta: 0,
     referencia: "Daniel 6:16",
-    explicacao:
-      "Daniel foi lançado na cova dos leões após se recusar a adorar uma imagem do rei, mas foi salvo por Deus.",
+    explicacao: "Daniel foi lançado na cova dos leões após se recusar a adorar uma imagem do rei, mas foi salvo por Deus."
   },
   {
     categoria: "Novo Testamento",
@@ -186,8 +185,7 @@ const perguntas = [
     opcoes: ["Pedro", "João", "Tiago"],
     correta: 0,
     referencia: "Mateus 26:69-75",
-    explicacao:
-      "Pedro negou Jesus três vezes, conforme predito por Jesus, mas se arrependeu depois da ressurreição.",
+    explicacao: "Pedro negou Jesus três vezes, conforme predito por Jesus, mas se arrependeu depois da ressurreição."
   },
   {
     categoria: "Antigo Testamento",
@@ -195,19 +193,23 @@ const perguntas = [
     opcoes: ["Davi", "Saul", "Salomão"],
     correta: 1,
     referencia: "1 Samuel 10:1",
-    explicacao:
-      "Saul foi o primeiro rei de Israel, ungido por Samuel conforme a vontade de Deus.",
+    explicacao: "Saul foi o primeiro rei de Israel, ungido por Samuel conforme a vontade de Deus."
   }
-  // Adicione mais perguntas conforme necessário
 ];
 
 let perguntaAtual = 0;
 let pontuacao = 0;
 let nivel = 1;
+let quizOriginalContent; // Variável para armazenar o conteúdo original do quiz
 
 document.addEventListener("DOMContentLoaded", () => {
   const somAcerto = document.getElementById("som-acerto");
   const somVitoria = document.getElementById("som-vitoria");
+
+  // Salva o conteúdo original do quiz-container
+  const quizContainer = document.getElementById("quiz-container");
+  quizOriginalContent = quizContainer.innerHTML;
+
   iniciarQuiz();
 });
 
@@ -232,6 +234,8 @@ function mostrarPergunta() {
     opcoesDiv.appendChild(botao);
   });
 
+  // Limpa a explicação da pergunta anterior
+  document.getElementById("explicacao").textContent = "";
   document.getElementById("barra-progresso").style.width = `${(perguntaAtual / perguntas.length) * 100}%`;
   document.getElementById("pontuacao").textContent = pontuacao;
 }
@@ -280,7 +284,7 @@ function proximaPergunta() {
 
 function finalizarQuiz() {
   localStorage.setItem("melhorPontuacao", Math.max(pontuacao, Number(localStorage.getItem("melhorPontuacao")) || 0));
-  document.getElementById(".quiz-container").innerHTML = `
+  document.getElementById("quiz-container").innerHTML = `
     <div class="resultado-final">
       <h3>🎉 Quiz Concluído!</h3>
       <p>Sua pontuação: ${pontuacao}/${perguntas.length}</p>
@@ -291,13 +295,23 @@ function finalizarQuiz() {
 }
 
 function reiniciarQuiz() {
+  const quizContainer = document.getElementById("quiz-container");
+
+  // Restaura o conteúdo original do quiz
+  quizContainer.innerHTML = quizOriginalContent;
+
+  // Reinicia as variáveis
   perguntaAtual = 0;
   pontuacao = 0;
+
+  // Reativa os event listeners
+  document.querySelectorAll(".opcao").forEach((opcao) => {
+    opcao.addEventListener("click", verificarResposta);
+  });
+
+  // Inicia o quiz novamente
   iniciarQuiz();
 }
-
-
-document.addEventListener("DOMContentLoaded", iniciarQuiz);
 
 // Exemplo: Jogo da Memória
 const personagens = ["davi", "golias", "noe", "moises", "maria", "jesus"];
@@ -324,5 +338,99 @@ function virarCarta(event) {
   // Lógica para verificar pares...
 }
 
-// Iniciar jogo ao carregar
-document.addEventListener("DOMContentLoaded", criarGradeMemoria);
+
+document.addEventListener("DOMContentLoaded", () => {
+  const palavras = ["SOL", "LUA", "MAR", "ÁRVORE", "ESTRELA", "TERRA", "HOMEM", "ANIMAL"];
+  const tamanhoGrade = 10; // Tamanho da grade (10x10)
+  const tabela = document.querySelector(".tabela-palavras");
+
+  // Inicializa a grade com letras aleatórias
+  let grade = Array.from({ length: tamanhoGrade }, () =>
+      Array.from({ length: tamanhoGrade }, () => String.fromCharCode(65 + Math.floor(Math.random() * 26)))
+  );
+
+  // Insere as palavras na grade
+  palavras.forEach((palavra) => {
+      let direcao = Math.random() < 0.5 ? "horizontal" : "vertical"; // Escolhe direção aleatória
+      let linha, coluna;
+
+      if (direcao === "horizontal") {
+          linha = Math.floor(Math.random() * tamanhoGrade);
+          coluna = Math.floor(Math.random() * (tamanhoGrade - palavra.length));
+          for (let i = 0; i < palavra.length; i++) {
+              grade[linha][coluna + i] = palavra[i];
+          }
+      } else {
+          coluna = Math.floor(Math.random() * tamanhoGrade);
+          linha = Math.floor(Math.random() * (tamanhoGrade - palavra.length));
+          for (let i = 0; i < palavra.length; i++) {
+              grade[linha + i][coluna] = palavra[i];
+          }
+      }
+  });
+
+  // Renderiza a grade na tabela
+  grade.forEach((linha, i) => {
+      const tr = document.createElement("tr");
+      linha.forEach((letra, j) => {
+          const td = document.createElement("td");
+          td.textContent = letra;
+          td.dataset.linha = i;
+          td.dataset.coluna = j;
+          tr.appendChild(td);
+      });
+      tabela.appendChild(tr);
+  });
+
+  // Lógica de seleção de palavras
+  let selecionados = [];
+  tabela.addEventListener("click", (e) => {
+      if (e.target.tagName === "TD") {
+          const linha = parseInt(e.target.dataset.linha);
+          const coluna = parseInt(e.target.dataset.coluna);
+
+          // Adiciona ou remove a célula da lista de selecionados
+          const index = selecionados.findIndex((celula) => celula.linha === linha && celula.coluna === coluna);
+          if (index === -1) {
+              selecionados.push({ linha, coluna });
+              e.target.classList.add("selecionado");
+          } else {
+              selecionados.splice(index, 1);
+              e.target.classList.remove("selecionado");
+          }
+
+          // Verifica se as células selecionadas formam uma palavra
+          verificarPalavra(selecionados);
+      }
+  });
+
+  // Função para verificar se as células selecionadas formam uma palavra
+  function verificarPalavra(celulas) {
+      if (celulas.length < 2) return; // Precisa de pelo menos 2 letras
+
+      // Ordena as células por linha e coluna
+      celulas.sort((a, b) => a.linha - b.linha || a.coluna - b.coluna);
+
+      // Verifica se as células estão em linha reta (horizontal ou vertical)
+      const direcao = celulas[0].linha === celulas[1].linha ? "horizontal" : "vertical";
+      const valido = celulas.every((celula, i, arr) => {
+          if (direcao === "horizontal") {
+              return celula.linha === arr[0].linha && celula.coluna === arr[0].coluna + i;
+          } else {
+              return celula.coluna === arr[0].coluna && celula.linha === arr[0].linha + i;
+          }
+      });
+
+      if (valido) {
+          const palavra = celulas.map((celula) => grade[celula.linha][celula.coluna]).join("");
+          if (palavras.includes(palavra)) {
+              alert(`Parabéns! Você encontrou a palavra: ${palavra}`);
+              celulas.forEach((celula) => {
+                  const td = tabela.rows[celula.linha].cells[celula.coluna];
+                  td.classList.add("encontrado");
+              });
+              selecionados = []; // Limpa a seleção
+          }
+      }
+  }
+});
