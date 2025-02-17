@@ -1,5 +1,23 @@
 // js/script.js
 
+window.addEventListener("scroll", function () {
+  document
+    .querySelector("header")
+    .classList.toggle("shrink", window.scrollY > 50);
+});
+
+function compartilharHistoria(historia) {
+  let url = window.location.href;
+  let mensagem = `Confira essa história bíblica incrível: ${historia} - ${url}`;
+  window.open(`https://wa.me/?text=${encodeURIComponent(mensagem)}`, "_blank");
+}
+
+document.querySelectorAll("#navbar a").forEach(link => {
+  link.addEventListener("click", () => {
+    document.getElementById("navbar").classList.remove("active");
+  });
+});
+
 // Array de orações (personalize conforme desejar)
 const oracoes = [
   "Querido Deus, obrigado por este dia. Ajuda-me a ser bondoso com todos que encontrar hoje e a aprender algo novo. Amém! 🌟",
@@ -10,10 +28,9 @@ const oracoes = [
 ];
 
 function toggleMenu() {
-    const nav = document.getElementById("navbar");
-    nav.classList.toggle("active");
+  const nav = document.getElementById("navbar");
+  nav.classList.toggle("active");
 }
-
 
 // Função para gerar oração aleatória
 function gerarOracao() {
@@ -22,12 +39,16 @@ function gerarOracao() {
 }
 
 function compartilharVersiculoWhatsApp() {
-  const texto = document.querySelector(".texto-versiculo")?.textContent || "Versículo inspirador da Bíblia";
-  const referencia = document.querySelector(".referencia-versiculo")?.textContent || "";
+  const texto =
+    document.querySelector(".texto-versiculo")?.textContent ||
+    "Versículo inspirador da Bíblia";
+  const referencia =
+    document.querySelector(".referencia-versiculo")?.textContent || "";
   const mensagem = `${texto} ${referencia} - Veja mais em ${window.location.href}`;
-  window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(mensagem)}`);
+  window.open(
+    `https://api.whatsapp.com/send?text=${encodeURIComponent(mensagem)}`
+  );
 }
-
 
 // Gerar oração automática ao carregar a página + a cada 24h
 function atualizarOracaoDiaria() {
@@ -93,36 +114,43 @@ function compartilharVersiculo() {
 
 // Funções para os quizzes
 function verificarResposta(historiaId, resposta) {
-    const resultados = {
-        1: { correta: 1, mensagem: "Isso! 🌱 Deus criou plantas no 3º dia!" },
-        2: { correta: 2, mensagem: "Exato! Davi levou 5 pedrinhas! 🪨" },
-        3: { correta: 2, mensagem: "Certo! Daniel orava 3 vezes ao dia! 🙏" },
-        4: { correta: 2, mensagem: "Isso! O samaritano ajudou! ❤️" },
-        5: { correta: 2, mensagem: "Correto! Choveu por 40 dias! 🌧️" },
-        6: { correta: 2, mensagem: "Sim! Jesus nasceu em Belém! 🌟" },
-        7: { correta: 2, mensagem: "Exato! A serpente enganou Eva! 🐍" },
-        8: { correta: 1, mensagem: "Isso! O filho se chamava Isaque! 👶" },
-        9: { correta: 2, mensagem: "Certo! Ana dedicou Samuel a Deus! ⛪" },
-        10: { correta: 2, mensagem: "Exato! Deus chamou 3 vezes! 🌙" },
-        11: { correta: 2, mensagem: "Sim! Maria aceitou com fé! 🙏" },
-        12: { correta: 2, mensagem: "Isso! Moisés usou o cajado! 🪄" },
-        13: { correta: 1, mensagem: "Certo! 7 voltas no 7º dia! 🎇" },
-        14: { correta: 2, mensagem: "Exato! Jesus repreendeu o vento! 🌪️" },
-        15: { correta: 2, mensagem: "Sim! 12 cestos de sobras! 🧺" },
-        16: { correta: 2, mensagem: "Isso! O pai o abraçou! 💞" },
-        17: { correta: 2, mensagem: "Certo! 2 vezes ao dia! 🕊️" },
-        18: { correta: 1, mensagem: "Exato! 99 ovelhas ficaram! 🌾" },
-        19: { correta: 2, mensagem: "Sim! Pedro duvidou! 😲" },
-        20: { correta: 2, mensagem: "Correto! Lázaro estava morto há 4 dias! ⏳" }
-    };
-  
-    const resultadoElemento = document.getElementById(`resultado-${historiaId}`);
-    if (resposta === resultados[historiaId].correta) {
-        resultadoElemento.innerHTML = `<span style="color: green;">${resultados[historiaId].mensagem}</span>`;
-    } else {
-        resultadoElemento.innerHTML = `<span style="color: red;">Ops! Tente novamente! 😊</span>`;
-    }
+  const resultados = {
+    1: { correta: 1, mensagem: "Isso! 🌱 Deus criou plantas no 3º dia!" },
+    2: { correta: 2, mensagem: "Exato! Davi levou 5 pedrinhas! 🪨" },
+    3: { correta: 2, mensagem: "Certo! Daniel orava 3 vezes ao dia! 🙏" },
+    4: { correta: 2, mensagem: "Isso! O samaritano ajudou! ❤️" },
+    5: { correta: 2, mensagem: "Correto! Choveu por 40 dias! 🌧️" },
+    6: { correta: 2, mensagem: "Sim! Jesus nasceu em Belém! 🌟" },
+    7: { correta: 2, mensagem: "Exato! A serpente enganou Eva! 🐍" },
+    8: { correta: 1, mensagem: "Isso! O filho se chamava Isaque! 👶" },
+    9: { correta: 2, mensagem: "Certo! Ana dedicou Samuel a Deus! ⛪" },
+    10: { correta: 2, mensagem: "Exato! Deus chamou 3 vezes! 🌙" },
+    11: { correta: 2, mensagem: "Sim! Maria aceitou com fé! 🙏" },
+    12: { correta: 2, mensagem: "Isso! Moisés usou o cajado! 🪄" },
+    13: { correta: 1, mensagem: "Certo! 7 voltas no 7º dia! 🎇" },
+    14: { correta: 2, mensagem: "Exato! Jesus repreendeu o vento! 🌪️" },
+    15: { correta: 2, mensagem: "Sim! 12 cestos de sobras! 🧺" },
+    16: { correta: 2, mensagem: "Isso! O pai o abraçou! 💞" },
+    17: { correta: 2, mensagem: "Certo! 2 vezes ao dia! 🕊️" },
+    18: { correta: 1, mensagem: "Exato! 99 ovelhas ficaram! 🌾" },
+    19: { correta: 2, mensagem: "Sim! Pedro duvidou! 😲" },
+    20: { correta: 2, mensagem: "Correto! Lázaro estava morto há 4 dias! ⏳" },
+  };
+
+  const resultadoElemento = document.getElementById(`resultado-${historiaId}`);
+  const botoes = document.querySelectorAll(`#historia-${historiaId} button`);
+
+  // Desativa os botões após resposta
+  botoes.forEach((botao) => (botao.disabled = true));
+
+  if (resposta === resultados[historiaId].correta) {
+    resultadoElemento.innerHTML = `<span class="resposta-correta">${resultados[historiaId].mensagem}</span>`;
+    resultadoElemento.classList.add("animacao-correta");
+  } else {
+    resultadoElemento.innerHTML = `<span class="resposta-incorreta">❌ Ops! Tente novamente! 😊</span>`;
+    resultadoElemento.classList.add("animacao-incorreta");
   }
+}
 
 // Compartilhar história
 function compartilharHistoria(titulo) {

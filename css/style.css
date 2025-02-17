@@ -5,9 +5,8 @@
   box-sizing: border-box;
 }
 
-
 body {
-  font-family: 'Nunito';
+  font-family: "Nunito";
   background-color: #fce4ec;
   /* Fundo suave e acolhedor */
 }
@@ -15,6 +14,12 @@ body {
 /* Cabeçalho */
 /* Navbar moderna */
 /* Header Moderno e Compacto */
+
+h2 {
+  font-size: 1.8rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
 header {
   background: linear-gradient(45deg, #3498db, #2980b9);
   /* Azul mais intenso */
@@ -35,6 +40,14 @@ header h1 {
   font-size: 1.5rem;
   margin: 0;
   color: #fff;
+}
+
+header.shrink {
+  height: 50px;
+  padding: 0 0.5rem;
+}
+header.shrink h1 {
+  font-size: 1.2rem;
 }
 
 /* Menu de Navegação */
@@ -64,7 +77,6 @@ nav a:hover {
 
 /* Versão Mobile */
 @media (max-width: 768px) {
-
   /* Exibe o ícone do menu */
   .menu-icon {
     display: block;
@@ -92,8 +104,6 @@ nav a:hover {
     display: flex;
   }
 }
-
-
 
 /* Versículo do Dia */
 .versiculo-do-dia {
@@ -171,12 +181,11 @@ nav a:hover {
   flex-grow: 1;
 }
 
-
 /* Botões */
 .botao-leia,
 .botao-compartilhar,
 .botao-gerar {
-  background: #ff80ab;
+  background: linear-gradient(45deg, #ff80ab, #ff4081);
   color: white;
   border: none;
   padding: 0.5rem 1.5rem;
@@ -191,7 +200,6 @@ nav a:hover {
   transform: scale(1.1);
   background: #f06292;
 }
-
 
 /* Mensagem de erro */
 .erro {
@@ -215,6 +223,56 @@ button {
   max-width: 1000px;
   margin: 0 auto;
   padding: 2rem;
+}
+
+/* Animação para resposta correta */
+.resposta-correta {
+  color: green;
+  font-weight: bold;
+}
+
+.animacao-correta {
+  animation: destaque 0.5s ease-in-out;
+}
+
+@keyframes destaque {
+  0% {
+    background-color: white;
+  }
+  50% {
+    background-color: #d4edda;
+  } /* Verde claro */
+  100% {
+    background-color: white;
+  }
+}
+
+/* Animação para resposta incorreta */
+.resposta-incorreta {
+  color: red;
+  font-weight: bold;
+}
+
+.animacao-incorreta {
+  animation: tremor 0.5s ease-in-out;
+}
+
+@keyframes tremor {
+  0% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-5px);
+  }
+  50% {
+    transform: translateX(5px);
+  }
+  75% {
+    transform: translateX(-5px);
+  }
+  100% {
+    transform: translateX(0);
+  }
 }
 
 .imagem-container {
@@ -248,7 +306,7 @@ button {
 .historia {
   background: white;
   border-radius: 15px;
-  padding: 2rem;
+  padding: 2.5rem;
   margin: 2rem 0;
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
 }
@@ -306,14 +364,16 @@ button {
 
 /* Efeitos Especiais */
 .arco-iris {
-  background: linear-gradient(45deg,
-      #ff0000,
-      #ff8000,
-      #ffff00,
-      #00ff00,
-      #00ffff,
-      #0000ff,
-      #8000ff);
+  background: linear-gradient(
+    45deg,
+    #ff0000,
+    #ff8000,
+    #ffff00,
+    #00ff00,
+    #00ffff,
+    #0000ff,
+    #8000ff
+  );
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
@@ -473,7 +533,6 @@ button {
 
 /* Responsivo para dispositivos menores */
 @media (max-width: 768px) {
-
   .versiculo-do-dia,
   .jogo-diario,
   .colorir,
@@ -537,7 +596,6 @@ button {
   background: #2980b9;
 }
 
-
 /* Início da seção Jogos */
 
 /* Estilos específicos para jogos */
@@ -576,7 +634,7 @@ button {
 .peca {
   width: 80px;
   height: 80px;
-  background: #3498db url('assets/images/arca-completa.jpg') no-repeat;
+  background: #3498db url("assets/images/arca-completa.jpg") no-repeat;
   background-size: cover;
   border: 2px solid #fff;
   cursor: grab;
@@ -591,6 +649,7 @@ button {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 10px;
+  justify-items: center;
 }
 
 .carta {
@@ -599,12 +658,53 @@ button {
   background: #2c3e50;
   border-radius: 8px;
   cursor: pointer;
-  transition: transform 0.3s;
+  transition: transform 0.3s, background-color 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  color: #fff;
+  /* Para efeitos 3D simples */
+  perspective: 1000px;
 }
 
-.carta.virada {
+/* Efeito de flip: a carta gira 180° */
+.carta.flip {
   background: #fff;
+  color: #000;
   transform: rotateY(180deg);
+}
+
+/* Corrige a rotação do texto dentro da carta */
+.carta.flip span {
+  display: block;
+  transform: rotateY(180deg);
+}
+
+/* Modal de mensagem final */
+.modal {
+  background: #fff;
+  padding: 1.5rem 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  margin-top: 1rem;
+}
+.modal h3 {
+  margin-bottom: 0.5rem;
+}
+.modal button {
+  background: #3498db;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 1rem;
+  transition: background 0.3s;
+}
+.modal button:hover {
+  background: #2980b9;
 }
 
 /* Caça-Palavras */
@@ -712,7 +812,7 @@ button {
 }
 
 .peca-imagem {
-  background-image: url('../assets/images/arca-completa.jpg');
+  background-image: url("../assets/images/arca-completa.jpg");
   /* Caminho relativo corrigido */
   background-size: 400px 400px;
   /* Tamanho total da imagem */
@@ -821,12 +921,14 @@ button {
   background: #2ecc71 !important;
   border-color: #27ae60 !important;
   color: white;
+  transform: scale(1.1);
 }
 
 .opcao.errada {
   background: #e74c3c !important;
   border-color: #c0392b !important;
   color: white;
+  transform: scale(0.9);
 }
 
 .botao-proxima {
@@ -844,7 +946,6 @@ button {
   text-align: center;
   margin-top: 1.5rem;
 }
-
 
 /* Estilos do Caçã palavras */
 .tabela-palavras {
@@ -902,7 +1003,7 @@ button {
 
 .controles button {
   padding: 10px 20px;
-  background-color: #4CAF50;
+  background-color: #4caf50;
   color: white;
   border: none;
   border-radius: 5px;
@@ -910,9 +1011,15 @@ button {
 }
 
 @keyframes pulse {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.1); }
-  100% { transform: scale(1); }
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 
 .tabela-palavras td.encontrado {
@@ -921,6 +1028,20 @@ button {
 }
 
 #contador {
-  color: #4CAF50;
+  color: #4caf50;
   font-weight: bold;
+}
+
+.rodape {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 14px;
+  color: #888;
+}
+
+@media (max-width: 600px) {
+  .historia-imagem {
+    max-width: 90%;
+    height: auto;
+  }
 }

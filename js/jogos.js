@@ -161,7 +161,8 @@ const perguntas = [
     opcoes: ["Moisés", "Noé", "Abraão"],
     correta: 1,
     referencia: "Gênesis 6:14",
-    explicacao: "Deus ordenou que Noé construísse a arca para salvar sua família e os animais do dilúvio."
+    explicacao:
+      "Deus ordenou que Noé construísse a arca para salvar sua família e os animais do dilúvio.",
   },
   {
     categoria: "Novo Testamento",
@@ -169,15 +170,18 @@ const perguntas = [
     opcoes: ["7", "10", "12"],
     correta: 2,
     referencia: "Mateus 10:2-4",
-    explicacao: "Jesus escolheu 12 discípulos para segui-lo e espalhar seus ensinamentos."
+    explicacao:
+      "Jesus escolheu 12 discípulos para segui-lo e espalhar seus ensinamentos.",
   },
   {
     categoria: "Antigo Testamento",
-    pergunta: "Quem foi lançado na cova dos leões por se recusar a adorar a imagem do rei?",
+    pergunta:
+      "Quem foi lançado na cova dos leões por se recusar a adorar a imagem do rei?",
     opcoes: ["Daniel", "Elias", "José"],
     correta: 0,
     referencia: "Daniel 6:16",
-    explicacao: "Daniel foi lançado na cova dos leões após se recusar a adorar uma imagem do rei, mas foi salvo por Deus."
+    explicacao:
+      "Daniel foi lançado na cova dos leões após se recusar a adorar uma imagem do rei, mas foi salvo por Deus.",
   },
   {
     categoria: "Novo Testamento",
@@ -185,7 +189,8 @@ const perguntas = [
     opcoes: ["Pedro", "João", "Tiago"],
     correta: 0,
     referencia: "Mateus 26:69-75",
-    explicacao: "Pedro negou Jesus três vezes, conforme predito por Jesus, mas se arrependeu depois da ressurreição."
+    explicacao:
+      "Pedro negou Jesus três vezes, conforme predito por Jesus, mas se arrependeu depois da ressurreição.",
   },
   {
     categoria: "Antigo Testamento",
@@ -193,8 +198,9 @@ const perguntas = [
     opcoes: ["Davi", "Saul", "Salomão"],
     correta: 1,
     referencia: "1 Samuel 10:1",
-    explicacao: "Saul foi o primeiro rei de Israel, ungido por Samuel conforme a vontade de Deus."
-  }
+    explicacao:
+      "Saul foi o primeiro rei de Israel, ungido por Samuel conforme a vontade de Deus.",
+  },
 ];
 
 let perguntaAtual = 0;
@@ -220,8 +226,12 @@ function iniciarQuiz() {
 
 function mostrarPergunta() {
   const quest = perguntas[perguntaAtual];
-  document.getElementById("pergunta").innerHTML = `${quest.pergunta} <br><small>${quest.referencia}</small>`;
-  document.getElementById("categoria").textContent = `Categoria: ${quest.categoria}`;
+  document.getElementById(
+    "pergunta"
+  ).innerHTML = `${quest.pergunta} <br><small>${quest.referencia}</small>`;
+  document.getElementById(
+    "categoria"
+  ).textContent = `Categoria: ${quest.categoria}`;
 
   const opcoesDiv = document.getElementById("opcoes");
   opcoesDiv.innerHTML = "";
@@ -236,7 +246,9 @@ function mostrarPergunta() {
 
   // Limpa a explicação da pergunta anterior
   document.getElementById("explicacao").textContent = "";
-  document.getElementById("barra-progresso").style.width = `${(perguntaAtual / perguntas.length) * 100}%`;
+  document.getElementById("barra-progresso").style.width = `${
+    (perguntaAtual / perguntas.length) * 100
+  }%`;
   document.getElementById("pontuacao").textContent = pontuacao;
 }
 
@@ -283,7 +295,10 @@ function proximaPergunta() {
 }
 
 function finalizarQuiz() {
-  localStorage.setItem("melhorPontuacao", Math.max(pontuacao, Number(localStorage.getItem("melhorPontuacao")) || 0));
+  localStorage.setItem(
+    "melhorPontuacao",
+    Math.max(pontuacao, Number(localStorage.getItem("melhorPontuacao")) || 0)
+  );
   document.getElementById("quiz-container").innerHTML = `
     <div class="resultado-final">
       <h3>🎉 Quiz Concluído!</h3>
@@ -313,35 +328,152 @@ function reiniciarQuiz() {
   iniciarQuiz();
 }
 
-// Exemplo: Jogo da Memória
+// Jogo da Memória
+// Lista de personagens (cada um aparecerá duas vezes)
 const personagens = ["davi", "golias", "noe", "moises", "maria", "jesus"];
-let cartas = [...personagens, ...personagens]; // Duplica para formar pares
+let cartas = [...personagens, ...personagens]; // duplicando para formar pares
+
+// Defina as cores disponíveis e um objeto para armazenar a cor de cada par
+const availableColorsDefault = ["#e74c3c", "#2ecc71", "#3498db", "#9b59b6", "#f1c40f", "#e67e22"];
+let availableColors = [...availableColorsDefault];
+let pairColors = {};
+
+let firstCard = null;
+let secondCard = null;
+let lockBoard = false;
+let acertos = 0;
 
 function criarGradeMemoria() {
   const grade = document.querySelector(".grade-memoria");
-  cartas = cartas.sort(() => Math.random() - 0.5); // Embaralha
+  grade.innerHTML = ""; // Limpa a grade atual
+  acertos = 0;
+  document.getElementById("acertos").textContent = acertos;
+  // Limpa eventual mensagem final
+  document.getElementById("mensagem-memoria").innerHTML = "";
 
+  // Embaralha as cartas
+  cartas = cartas.sort(() => Math.random() - 0.5);
+
+  // Cria os elementos de cada carta
   cartas.forEach((personagem, index) => {
     const carta = document.createElement("div");
     carta.className = "carta";
     carta.dataset.personagem = personagem;
-    carta.dataset.indice = index;
+    carta.dataset.index = index;
+    // Estrutura interna para facilitar o efeito flip:
+    carta.innerHTML = `<span></span>`;
     carta.addEventListener("click", virarCarta);
     grade.appendChild(carta);
   });
 }
 
-function virarCarta(event) {
-  const carta = event.target;
-  carta.style.background = "#fff";
-  carta.textContent = carta.dataset.personagem;
-  // Lógica para verificar pares...
+function virarCarta(e) {
+  if (lockBoard) return;
+  const carta = e.currentTarget;
+  // Evita clicar duas vezes na mesma carta
+  if (carta === firstCard) return;
+
+  // Revela o conteúdo da carta e aplica o efeito flip
+  carta.classList.add("flip");
+  carta.querySelector("span").textContent = carta.dataset.personagem;
+
+  if (!firstCard) {
+    firstCard = carta;
+    return;
+  }
+  secondCard = carta;
+  lockBoard = true;
+  verificarPar();
 }
 
+function verificarPar() {
+  const isMatch = firstCard.dataset.personagem === secondCard.dataset.personagem;
+  if (isMatch) {
+    acertos++;
+    document.getElementById("acertos").textContent = acertos;
+    desabilitarCartas();
+  } else {
+    desvirarCartas();
+  }
+}
+
+function desabilitarCartas() {
+  const personagem = firstCard.dataset.personagem;
+  // Se esse par ainda não tiver cor, atribuímos uma cor disponível
+  if (!pairColors[personagem]) {
+    pairColors[personagem] = availableColors.shift(); // pega a primeira cor da lista
+  }
+  const corPar = pairColors[personagem];
+
+  // Remove os event listeners para que não possam ser clicadas novamente
+  firstCard.removeEventListener("click", virarCarta);
+  secondCard.removeEventListener("click", virarCarta);
+
+  // Aplica a cor definida para esse par
+  firstCard.style.backgroundColor = corPar;
+  secondCard.style.backgroundColor = corPar;
+
+  resetBoard();
+
+  // Se todos os pares foram encontrados, exibe a mensagem personalizada
+  if (acertos === personagens.length) {
+    setTimeout(() => {
+      exibirMensagemFinal();
+    }, 500);
+  }
+}
+
+function desvirarCartas() {
+  setTimeout(() => {
+    firstCard.classList.remove("flip");
+    secondCard.classList.remove("flip");
+    firstCard.querySelector("span").textContent = "";
+    secondCard.querySelector("span").textContent = "";
+    resetBoard();
+  }, 1000);
+}
+
+function resetBoard() {
+  [firstCard, secondCard, lockBoard] = [null, null, false];
+}
+
+function exibirMensagemFinal() {
+  const container = document.getElementById("mensagem-memoria");
+  container.innerHTML = `
+    <div class="modal">
+      <h3>🎉 Parabéns!</h3>
+      <p>Você encontrou todos os pares!</p>
+      <button onclick="reiniciarMemoria()">Jogar Novamente</button>
+    </div>
+  `;
+}
+
+function reiniciarMemoria() {
+  // Reinicia as cores e o mapeamento
+  availableColors = [...availableColorsDefault];
+  pairColors = {};
+  cartas = [...personagens, ...personagens];
+  criarGradeMemoria();
+}
 
 document.addEventListener("DOMContentLoaded", () => {
-  const palavras = ["ESTRELA", "ÁRVORE", "TERRA", "ANIMAL", "HOMEM", "LUA", "MAR", "SOL"]
-    .sort((a, b) => b.length - a.length); // Ordena do maior para menor
+  criarGradeMemoria();
+});
+
+
+
+// Caça-Palavras
+document.addEventListener("DOMContentLoaded", () => {
+  const palavras = [
+    "ESTRELA",
+    "ÁRVORE",
+    "TERRA",
+    "ANIMAL",
+    "HOMEM",
+    "LUA",
+    "MAR",
+    "SOL",
+  ].sort((a, b) => b.length - a.length); // Ordena do maior para menor
   const tamanhoGrade = 12;
   const tabela = document.querySelector(".tabela-palavras");
   const container = document.querySelector(".container"); // Adicionando um container para o botão
@@ -351,12 +483,16 @@ document.addEventListener("DOMContentLoaded", () => {
   function inicializarGrade() {
     tabela.innerHTML = ""; // Limpa a tabela
     grade = Array.from({ length: tamanhoGrade }, () =>
-      Array.from({ length: tamanhoGrade }, () => String.fromCharCode(65 + Math.floor(Math.random() * 26)))
+      Array.from({ length: tamanhoGrade }, () =>
+        String.fromCharCode(65 + Math.floor(Math.random() * 26))
+      )
     );
-    ocupado = Array.from({ length: tamanhoGrade }, () => Array(tamanhoGrade).fill(false));
+    ocupado = Array.from({ length: tamanhoGrade }, () =>
+      Array(tamanhoGrade).fill(false)
+    );
 
     // Coloca as palavras na grade
-    palavras.forEach(palavra => {
+    palavras.forEach((palavra) => {
       if (!colocarPalavra(palavra)) {
         console.error(`Não foi possível colocar: ${palavra}`);
       }
@@ -384,7 +520,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
       if (direcao === "horizontal") {
         linha = Math.floor(Math.random() * tamanhoGrade);
-        coluna = Math.floor(Math.random() * (tamanhoGrade - palavra.length + 1));
+        coluna = Math.floor(
+          Math.random() * (tamanhoGrade - palavra.length + 1)
+        );
       } else {
         coluna = Math.floor(Math.random() * tamanhoGrade);
         linha = Math.floor(Math.random() * (tamanhoGrade - palavra.length + 1));
@@ -395,7 +533,10 @@ document.addEventListener("DOMContentLoaded", () => {
         const linhaAtual = direcao === "horizontal" ? linha : linha + i;
         const colunaAtual = direcao === "horizontal" ? coluna + i : coluna;
 
-        if (ocupado[linhaAtual][colunaAtual] && grade[linhaAtual][colunaAtual] !== palavra[i]) {
+        if (
+          ocupado[linhaAtual][colunaAtual] &&
+          grade[linhaAtual][colunaAtual] !== palavra[i]
+        ) {
           podeColocar = false;
           break;
         }
@@ -423,7 +564,9 @@ document.addEventListener("DOMContentLoaded", () => {
       const linha = parseInt(e.target.dataset.linha);
       const coluna = parseInt(e.target.dataset.coluna);
 
-      const index = selecionados.findIndex((celula) => celula.linha === linha && celula.coluna === coluna);
+      const index = selecionados.findIndex(
+        (celula) => celula.linha === linha && celula.coluna === coluna
+      );
       if (index === -1) {
         selecionados.push({ linha, coluna });
         e.target.classList.add("selecionado");
@@ -441,18 +584,28 @@ document.addEventListener("DOMContentLoaded", () => {
 
     celulas.sort((a, b) => a.linha - b.linha || a.coluna - b.coluna);
 
-    const direcao = celulas[0].linha === celulas[1].linha ? "horizontal" : "vertical";
+    const direcao =
+      celulas[0].linha === celulas[1].linha ? "horizontal" : "vertical";
     const valido = celulas.every((celula, i, arr) => {
       if (direcao === "horizontal") {
-        return celula.linha === arr[0].linha && celula.coluna === arr[0].coluna + i;
+        return (
+          celula.linha === arr[0].linha && celula.coluna === arr[0].coluna + i
+        );
       } else {
-        return celula.coluna === arr[0].coluna && celula.linha === arr[0].linha + i;
+        return (
+          celula.coluna === arr[0].coluna && celula.linha === arr[0].linha + i
+        );
       }
     });
 
     if (valido) {
-      const palavra = celulas.map((celula) => grade[celula.linha][celula.coluna]).join("");
-      if (palavras.includes(palavra) && !palavrasEncontradas.includes(palavra)) {
+      const palavra = celulas
+        .map((celula) => grade[celula.linha][celula.coluna])
+        .join("");
+      if (
+        palavras.includes(palavra) &&
+        !palavrasEncontradas.includes(palavra)
+      ) {
         palavrasEncontradas.push(palavra);
         celulas.forEach((celula) => {
           const td = tabela.rows[celula.linha].cells[celula.coluna];
@@ -488,7 +641,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     botao.style.display = "block";
   }
-
 
   function reiniciarJogo() {
     palavrasEncontradas = [];

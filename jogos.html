@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Jogue e aprenda com nossos jogos bíblicos para crianças. Desafios de memória, quizzes e caça-palavras com histórias da Bíblia para ensinar de maneira divertida.">
     <title>Jogos Bíblicos</title>
     <link rel="stylesheet" href="css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;700&display=swap" rel="stylesheet">
@@ -21,31 +22,7 @@
     </header>
 
     <main class="container-jogos">
-        <!-- Jogo 1: Quebra-Cabeça da Arca de Noé -->
-        <section class="card-jogo">
-            <h2>🧩 Quebra-Cabeça da Arca de Noé</h2>
-            <div class="dificuldade">
-                <button onclick="mudarDificuldade(4)">Fácil (2x2)</button>
-                <button onclick="mudarDificuldade(9)">Médio (3x3)</button>
-                <button onclick="mudarDificuldade(16)">Difícil (4x4)</button>
-            </div>
-            <div class="jogo-container">
-                <div class="info-jogo">
-                    <span>⏳ Tempo: <span id="tempo">00:00</span></span>
-                    <span>🏆 Melhor: <span id="melhor-tempo">--:--</span></span>
-                </div>
-                <div class="pecas-container"></div>
-                <div class="area-montagem"></div>
-                <div class="controles">
-                    <button class="botao-jogar" onclick="reiniciarJogo()">↻ Recomeçar</button>
-                    <audio id="som-acerto" src="assets/sounds/acerto.mp3"></audio>
-                    <audio id="som-vitoria" src="assets/sounds/vitoria.mp3"></audio>
-                    <p id="mensagem"></p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Jogo 2: Quiz das Promessas -->
+        <!-- Jogo 1: Quiz das Promessas -->
         <section class="card-jogo">
             <h2>📜 Quiz das Promessas de Deus</h2>
             <div id="quiz-container" class="quiz-container">
@@ -72,15 +49,18 @@
         </section>
 
 
-        <!-- Jogo 3: Memória Bíblica -->
+        <!-- Jogo 2: Memória Bíblica -->
         <section class="card-jogo">
             <h2>🎴 Memória dos Personagens</h2>
             <div class="jogo-container" id="jogo-memoria">
                 <div class="grade-memoria"></div>
                 <p class="pontuacao">Acertos: <span id="acertos">0</span></p>
+                <div id="mensagem-memoria"></div>
             </div>
         </section>
-        <!-- Jogo 4: Caça-Palavras da Criação -->
+
+
+        <!-- Jogo 3: Caça-Palavras da Criação -->
         <section class="card-jogo">
             <h2>🔍 Caça-Palavras da Criação</h2>
             <div class="jogo-container" id="caca-palavras">
@@ -97,11 +77,12 @@
 
     </main>
 
-    <footer>
-        <p>© 2025 HIstórias da Bíblia para Crianças. Todos os direitos reservados.</p>
+    <footer class="rodape">
+        <p>© 2025 Histórias da Bíblia para Crianças. Todos os direitos reservados.</p>
     </footer>
 
-    <script src="js/jogos.js"></script>
+    <script src="js/jogos.js" defer></script>
+
 </body>
 
 </html>
