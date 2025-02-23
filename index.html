@@ -4,41 +4,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Site com versículos diários, histórias bíblicas educativas para crianças, jogos interativos e atividades de colorir, tudo para ensinar de forma divertida a palavra de Deus.">
-    <title>Histórias Bíblicas para Crianças - Versículos e Jogos Bíblicos Diários</title>
+    <meta name="description"
+        content="Histórias bíblicas interativas, versículos diários e jogos educativos para crianças.">
+    <title>Bíblia para Crianças - Versículos e Jogos</title>
     <link rel="stylesheet" href="css/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;700&family=Poppins:wght@300;400;700&display=swap"
+        rel="stylesheet">
 </head>
 
 <body>
-    <!-- Cabeçalho -->
-    <header>
-        <h1>📖 Histórias Bíblicas</h1>
-        <span class="menu-icon" onclick="toggleMenu()">☰</span>
-        <nav id="navbar">
-            <a href="index.html">Home</a>
-            <a href="historias.html">Histórias</a>
-            <a href="jogos.html">Jogos</a>
-        </nav>
+
+    <header class="header-glass">
+        <div class="header-container">
+            <h1>📖 Bíblia para Crianças</h1>
+            <span class="menu-icon" onclick="toggleMenu()">☰</span> <!-- Hamburger Icon -->
+            <nav id="navbar">
+                <a href="index.html">Home</a>
+                <a href="historias.html">Histórias</a>
+                <a href="jogos.html">Jogos</a>
+            </nav>
+        </div>
     </header>
 
 
-    <!-- Seção da Palavra do Dia -->
-    <section class="versiculo-do-dia">
+    <!-- Hero Section with Video Background -->
+    <section class="hero">
+        <video autoplay loop muted playsinline class="hero-video">
+            <source src="assets/videos/header-bg.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div class="hero-overlay"></div> <!-- Optional dark overlay for better contrast -->
+        <div class="hero-content fade-in">
+            <h2>Aprenda a Bíblia de forma divertida! 🌟</h2>
+            <p>Descubra histórias, jogue e memorize versículos diários.</p>
+            <a href="historias.html" class="btn-cta">Explorar Histórias</a>
+        </div>
+    </section>
+
+
+    <!-- Versículo do Dia -->
+    <section class="versiculo-do-dia fade-in">
         <h2>🌟 Versículo do Dia</h2>
         <div id="versiculo-conteudo">Carregando...</div>
-        <button class="botao-compartilhar" onclick="compartilharVersiculo()">Compartilhar</button>
+        <button class="btn-cta" onclick="compartilharVersiculo()">Compartilhar</button>
     </section>
 
     <!-- Seção de Histórias em Destaque -->
-    <section class="historias-destaque">
+    <section class="historias-destaque fade-in">
         <!-- Antigo Testamento -->
         <h3 class="subtitulo-secao">🌿 Histórias do Antigo Testamento</h3>
         <div class="grid-historias">
             <!-- Criação do Mundo -->
             <div class="card-historia">
                 <div class="imagem-container">
-                    <img src="assets/images/criacao.jpg" alt="Deus criando o mundo" loading="lazy">
+                    <img src="assets/images/criacao.webp" alt="Deus criando o mundo" loading="lazy">
                 </div>
                 <h4>A Criação do Mundo</h4>
                 <p>Gênesis 1 - Como Deus criou tudo em 6 dias</p>
@@ -58,7 +78,7 @@
             <!-- Arca de Noé -->
             <div class="card-historia">
                 <div class="imagem-container">
-                    <img src="assets/images/arca-noe.png" alt="Arca de Noé com animais" loading="lazy">
+                    <img src="assets/images/arca-noe.webp" alt="Arca de Noé com animais" loading="lazy">
                 </div>
                 <h4>A Arca de Noé</h4>
                 <p>Gênesis 6-9 - Um grande barco e um novo começo</p>
@@ -68,7 +88,7 @@
             <!-- Abraão -->
             <div class="card-historia">
                 <div class="imagem-container">
-                    <img src="assets/images/abraao.png" alt="Abraão olhando para as estrelas" loading="lazy">
+                    <img src="assets/images/abraao.webp" alt="Abraão olhando para as estrelas" loading="lazy">
                 </div>
                 <h4>A Promessa a Abraão</h4>
                 <p>Gênesis 12-22 - A aliança de Deus com seu povo</p>
@@ -78,7 +98,7 @@
             <!-- Moisés Mar Vermelho -->
             <div class="card-historia">
                 <div class="imagem-container">
-                    <img src="assets/images/mar-vermelho.png" alt="Moisés abrindo o mar" loading="lazy">
+                    <img src="assets/images/mar-vermelho.webp" alt="Moisés abrindo o mar" loading="lazy">
                 </div>
                 <h4>O Mar Vermelho</h4>
                 <p>Êxodo 14 - O milagre da libertação</p>
@@ -92,7 +112,7 @@
             <!-- Jesus acalma a tempestade -->
             <div class="card-historia">
                 <div class="imagem-container">
-                    <img src="assets/images/tempestade.png" alt="Jesus acalmando a tempestade" loading="lazy">
+                    <img src="assets/images/tempestade.webp" alt="Jesus acalmando a tempestade" loading="lazy">
                 </div>
                 <h4>Tempestade Acalmada</h4>
                 <p>Marcos 4:35-41 - Jesus mostra seu poder sobre a natureza</p>
@@ -102,7 +122,7 @@
             <!-- Multiplicação dos pães -->
             <div class="card-historia">
                 <div class="imagem-container">
-                    <img src="assets/images/paes-peixes.png" alt="Menino com pães e peixes" loading="lazy">
+                    <img src="assets/images/paes-peixes.webp" alt="Menino com pães e peixes" loading="lazy">
                 </div>
                 <h4>Pães e Peixes</h4>
                 <p>João 6:1-14 - O milagre que alimentou milhares</p>
@@ -112,7 +132,7 @@
             <!-- Filho pródigo -->
             <div class="card-historia">
                 <div class="imagem-container">
-                    <img src="assets/images/filho-prodigo.png" alt="Pai abraçando filho" loading="lazy">
+                    <img src="assets/images/filho-prodigo.webp" alt="Pai abraçando filho" loading="lazy">
                 </div>
                 <h4>O Filho Pródigo</h4>
                 <p>Lucas 15:11-32 - Sobre perdão e amor incondicional</p>
@@ -122,7 +142,7 @@
             <!-- Pedro anda sobre as águas -->
             <div class="card-historia">
                 <div class="imagem-container">
-                    <img src="assets/images/pedro-aguas.png" alt="Pedro andando sobre o mar" loading="lazy">
+                    <img src="assets/images/pedro-aguas.webp" alt="Pedro andando sobre o mar" loading="lazy">
                 </div>
                 <h4>Pedro nas Águas</h4>
                 <p>Mateus 14:22-33 - Quando a fé faz milagres</p>
@@ -132,7 +152,7 @@
             <!-- Lázaro -->
             <div class="card-historia">
                 <div class="imagem-container">
-                    <img src="assets/images/lazaro.png" alt="Lázaro saindo do túmulo" loading="lazy">
+                    <img src="assets/images/lazaro.webp" alt="Lázaro saindo do túmulo" loading="lazy">
                 </div>
                 <h4>Ressurreição de Lázaro</h4>
                 <p>João 11:1-44 - O poder sobre a morte</p>
@@ -145,25 +165,11 @@
             </div>
     </section>
 
-    <section class="jogo-diario">
-        <h2>🎮 Jogo Bíblico</h2>
-        <div class="quiz-rapido">
-            <p id="pergunta-jogo">Qual personagem construiu uma arca?</p>
-            <button onclick="verificarRespostaJogo('noe')">Noé</button>
-            <button onclick="verificarRespostaJogo('davi')">Davi</button>
-            <p id="resultado-jogo" class="resultado-quiz"></p>
-        </div>
-    </section>
-
-    <section class="colorir">
-        <h2>🎨 Vamos Colorir!</h2>
-        <div class="grid-desenhos">
-            <div class="card-desenho">
-                <img src="../assets/images/reis-magos.jpg" alt="O encontro dos Reis Magos para colorir" loading="lazy">
-                <a href="../assets/downloads/reis-magos.jpg" download class="botao-download">Baixar</a>
-            </div>
-            <!-- Adicione mais desenhos -->
-        </div>
+    <!-- Jogos Interativos -->
+    <section class="jogos fade-in">
+        <h2>🎮 Jogos Bíblicos</h2>
+        <p>Aprenda brincando com nossos jogos educativos!</p>
+        <a href="jogos.html" class="btn-cta">Jogar Agora</a>
     </section>
 
     <section class="curiosidades">
@@ -176,7 +182,7 @@
         </div>
     </section>
 
-    <section class="video-destaque">
+    <section class="video-destaque fade-in">
         <h2>📺 Vídeo da Semana</h2>
         <div class="video-container">
             <iframe src="https://www.youtube.com/embed/s1ldFjCZx5w?si=00qBCST3L7UQyL_S"
@@ -187,15 +193,15 @@
         </div>
     </section>
 
-    <section class="oracao-do-dia">
+    <section class="oracao-do-dia fade-in">
         <h2>🙏 Oração do Dia</h2>
         <div id="texto-oracao">Carregando oração...</div>
-        <button class="botao-gerar" onclick="gerarOracao()">Nova Oração</button>
+        <button class="btn-cta" onclick="gerarOracao()">Nova Oração</button>
     </section>
 
     <!-- Rodapé -->
     <footer class="rodape">
-        <p>© 2025 Histórias da Bíblia para Crianças. Todos os direitos reservados.</p>
+        <p>© 2025 Bíblia para Crianças. Todos os direitos reservados.</p>
     </footer>
 
     <script src="js/script.js" defer></script>

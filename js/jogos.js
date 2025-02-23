@@ -334,7 +334,14 @@ const personagens = ["davi", "golias", "noe", "moises", "maria", "jesus"];
 let cartas = [...personagens, ...personagens]; // duplicando para formar pares
 
 // Defina as cores disponíveis e um objeto para armazenar a cor de cada par
-const availableColorsDefault = ["#e74c3c", "#2ecc71", "#3498db", "#9b59b6", "#f1c40f", "#e67e22"];
+const availableColorsDefault = [
+  "#e74c3c",
+  "#2ecc71",
+  "#3498db",
+  "#9b59b6",
+  "#f1c40f",
+  "#e67e22",
+];
 let availableColors = [...availableColorsDefault];
 let pairColors = {};
 
@@ -387,7 +394,8 @@ function virarCarta(e) {
 }
 
 function verificarPar() {
-  const isMatch = firstCard.dataset.personagem === secondCard.dataset.personagem;
+  const isMatch =
+    firstCard.dataset.personagem === secondCard.dataset.personagem;
   if (isMatch) {
     acertos++;
     document.getElementById("acertos").textContent = acertos;
@@ -459,8 +467,6 @@ function reiniciarMemoria() {
 document.addEventListener("DOMContentLoaded", () => {
   criarGradeMemoria();
 });
-
-
 
 // Caça-Palavras
 document.addEventListener("DOMContentLoaded", () => {

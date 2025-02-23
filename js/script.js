@@ -6,13 +6,14 @@ window.addEventListener("scroll", function () {
     .classList.toggle("shrink", window.scrollY > 50);
 });
 
+
 function compartilharHistoria(historia) {
   let url = window.location.href;
   let mensagem = `Confira essa história bíblica incrível: ${historia} - ${url}`;
   window.open(`https://wa.me/?text=${encodeURIComponent(mensagem)}`, "_blank");
 }
 
-document.querySelectorAll("#navbar a").forEach(link => {
+document.querySelectorAll("#navbar a").forEach((link) => {
   link.addEventListener("click", () => {
     document.getElementById("navbar").classList.remove("active");
   });
@@ -28,9 +29,26 @@ const oracoes = [
 ];
 
 function toggleMenu() {
-  const nav = document.getElementById("navbar");
-  nav.classList.toggle("active");
+  var navbar = document.getElementById("navbar");
+  navbar.classList.toggle("active");
 }
+
+document.addEventListener("DOMContentLoaded", function () {
+  const elements = document.querySelectorAll(".fade-in");
+
+  function checkVisibility() {
+    elements.forEach((element) => {
+      const rect = element.getBoundingClientRect();
+      if (rect.top < window.innerHeight * 0.9) {
+        element.classList.add("visible");
+      }
+    });
+  }
+
+  window.addEventListener("scroll", checkVisibility);
+  checkVisibility();
+});
+
 
 // Função para gerar oração aleatória
 function gerarOracao() {
