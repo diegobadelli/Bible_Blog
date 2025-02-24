@@ -77,18 +77,22 @@
         </section>
 
         <!-- Jogo: O Bom Pastor -->
-        <section class="card-jogo-pastor-box card-jogo-pastor">
+        <section class="card-jogo card-jogo-pastor">
             <h2>🐑 O Bom Pastor - Salve as Ovelhas!</h2>
-            <p>Use as setas do teclado para guiar o pastor e proteger as ovelhas.</p>
-            <canvas id="pastorGameCanvas" width="400" height="300"></canvas>
-            <!-- Game Over Message -->
-            <div id="gameOverMessage">
-                ⚠️ O pastor foi atacado! <br>
-                <button id="restartButton">🔄 Reiniciar Jogo</button>
+            <p>Use as setas do teclado ou deslize para guiar o pastor e proteger as ovelhas.</p>
+
+            <div class="game-container">
+                <canvas id="pastorGameCanvas"></canvas>
+                <!-- Game Over Message -->
+                <div id="gameOverMessage">
+                    ⚠️ O pastor foi atacado! <br>
+                    <button id="restartButton">🔄 Reiniciar Jogo</button>
+                </div>
             </div>
 
             <p>Pontuação: <span id="score">0</span></p>
         </section>
+
 
     </main>
 

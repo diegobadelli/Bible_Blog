@@ -1226,56 +1226,55 @@ button {
 
 /* Expands the Shepherd Game */
 .card-jogo-pastor {
-  width: 100%; /* Takes full width */
-  max-width: 850px; /* Matches the three top games */
-  height: 400px; /* Adjust the height */
-  display: block;
+  grid-column: span 3; /* Make it occupy the full width */
+  width: 100%;
+  max-width: 100vh; /* Adjust as needed */
+  margin: auto;
+  text-align: center;
+  padding: 1.5rem;
+  box-sizing: border-box;
+  position: relative; /* This makes #gameOverMessage position itself relative to the game */
+  display: flex;
   flex-direction: column;
   align-items: center;
-  text-align: center;
-  padding: 2rem;
-  margin: auto;
-  margin-bottom: 2rem;
-  grid-column: span 3;
+  justify-content: center;
 }
 
 #pastorGameCanvas {
-  background-color: lightgray;
-  border: 2px solid black;
   width: 100%;
-  max-width: 800px;
+  max-width: 950vh;
   height: 400px;
   display: block;
-  margin: 1rem auto; /* Adds space below the canvas */
-  position: relative;
+  margin: 1rem auto;
+  border: 2px solid black; /* Ensures it is visible inside the section */
+  background-color: #ddd; /* Optional: Better visibility */
 }
 
 /* Game Over Message Box */
 #gameOverMessage {
-  display: none; /* Initially hidden */
+  display: none; /* Hidden until game is over */
+  text-align: center;
+  padding: 1rem;
   background: rgba(0, 0, 0, 0.8);
   color: white;
-  padding: 1.5rem;
-  text-align: center;
-  font-size: 1.2rem;
   border-radius: 10px;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  width: 80%;
+  max-width: 300px;
   z-index: 10;
 }
 
-/* Restart Button */
 #restartButton {
   background: #ff4081;
   color: white;
-  padding: 0.8rem 1.5rem;
   border: none;
+  padding: 10px 20px;
   border-radius: 5px;
-  font-size: 1rem;
   cursor: pointer;
-  margin-top: 1rem;
+  margin-top: 10px;
 }
 
 #restartButton:hover {
@@ -1288,10 +1287,16 @@ button {
   gap: 1rem;
 }
 
-.card-jogo-pastor-box {
-  background: white;
-  border-radius: 15px;
-  padding: 3.5rem;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  text-align: center;
+/* Make sure games are stacked vertically on mobile */
+@media (max-width: 768px) {
+  .card-jogo {
+    flex-direction: column;
+    width: 100%;
+    padding: 1rem;
+  }
+
+  #pastorGameCanvas {
+    width: 100%;
+    height: 300px;
+  }
 }
