@@ -12,15 +12,25 @@
 
 <body class="pagina-historias">
     <!-- Cabeçalho -->
-    <header>
-        <h1>📖 Histórias Bíblicas</h1>
-        <span class="menu-icon" onclick="toggleMenu()">☰</span>
-        <nav id="navbar">
-            <a href="index.html">Home</a>
-            <a href="historias.html">Histórias</a>
-            <a href="jogos.html">Jogos</a>
-        </nav>
+    <header class="header-glass">
+        <div class="header-container">
+            <h1>📖 Bíblia para Crianças</h1>
+            <span class="menu-icon" onclick="toggleMenu()">☰</span> <!-- Hamburger Icon -->
+            <nav id="navbar">
+                <a href="index.html">Home</a>
+                <a href="historias.html">Histórias</a>
+                <a href="jogos.html">Jogos</a>
+            </nav>
+        </div>
     </header>
+
+    <section class="hero-static">
+        <div class="hero-content">
+            <h2>📖 Explore Nossas Histórias</h2>
+            <p>Descubra histórias bíblicas emocionantes e inspiradoras para crianças.</p>
+        </div>
+    </section>
+
 
     <main class="container-historias">
         <!-- História 1 -->
@@ -372,7 +382,8 @@
         <section class="historia" id="jerico">
             <h2>13. 🏰 A Queda de Jericó</h2>
             <div class="imagem-historia">
-                <img src="assets/images/jerico.webp" alt="Muros de Jericó caindo" class="historia-imagem" loading="lazy">
+                <img src="assets/images/jerico.webp" alt="Muros de Jericó caindo" class="historia-imagem"
+                    loading="lazy">
             </div>
             <div class="historia-texto">
                 <p class="destaque">"Gritem, pois o Senhor lhes entregou a cidade!" (Josué 6:16)</p>
@@ -585,13 +596,13 @@
                 no WhatsApp</button>
         </section>
 
-    <!-- Rodapé -->
-    <footer class="rodape">
-        <p>© 2025 Bíblia para Crianças. Todos os direitos reservados.</p>
-    </footer>
+        <!-- Rodapé -->
+        <footer class="rodape">
+            <p>© 2025 Bíblia para Crianças. Todos os direitos reservados.</p>
+        </footer>
 
-    <!-- Scripts -->
-    <script src="js/script.js" defer></script>
+        <!-- Scripts -->
+        <script src="js/script.js" defer></script>
 
 </body>
 
