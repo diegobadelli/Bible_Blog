@@ -7,11 +7,6 @@ window.addEventListener("scroll", function () {
 });
 
 
-function compartilharHistoria(historia) {
-  let url = window.location.href;
-  let mensagem = `Confira essa história bíblica incrível: ${historia} - ${url}`;
-  window.open(`https://wa.me/?text=${encodeURIComponent(mensagem)}`, "_blank");
-}
 
 document.querySelectorAll("#navbar a").forEach((link) => {
   link.addEventListener("click", () => {
@@ -57,17 +52,6 @@ function gerarOracao() {
   document.getElementById("texto-oracao").textContent = oracoes[indice];
 }
 
-function compartilharVersiculoWhatsApp() {
-  const texto =
-    document.querySelector(".texto-versiculo")?.textContent ||
-    "Versículo inspirador da Bíblia";
-  const referencia =
-    document.querySelector(".referencia-versiculo")?.textContent || "";
-  const mensagem = `${texto} ${referencia} - Veja mais em ${window.location.href}`;
-  window.open(
-    `https://api.whatsapp.com/send?text=${encodeURIComponent(mensagem)}`
-  );
-}
 
 // Gerar oração automática ao carregar a página + a cada 24h
 function atualizarOracaoDiaria() {
@@ -127,7 +111,8 @@ function compartilharVersiculo() {
       text: mensagem,
     });
   } else {
-    alert("Copie para compartilhar:\n" + mensagem);
+    const url = `https://wa.me/?text=${encodeURIComponent(mensagem)}`;
+    window.open(url, "_blank");
   }
 }
 
@@ -181,7 +166,8 @@ function compartilharHistoria(titulo) {
       text: mensagem,
     });
   } else {
-    prompt("Copie o link para compartilhar:", mensagem);
+    const url = `https://wa.me/?text=${encodeURIComponent(mensagem)}`;
+    window.open(url, "_blank");
   }
 }
 
