@@ -1,6 +1,7 @@
 # Bíblia para Crianças
 
 Um site educativo com histórias bíblicas para crianças, apresentado de forma acessível e interativa.
+Agora também traz vídeos do canal [LionUp](https://www.youtube.com/@LionUp) para complementar o aprendizado.
 
 ## 🚀 Tecnologias Utilizadas
 
