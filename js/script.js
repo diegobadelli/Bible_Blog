@@ -7,11 +7,6 @@ window.addEventListener("scroll", function () {
 });
 
 
-function compartilharHistoria(historia) {
-  let url = window.location.href;
-  let mensagem = `Confira essa história bíblica incrível: ${historia} - ${url}`;
-  window.open(`https://wa.me/?text=${encodeURIComponent(mensagem)}`, "_blank");
-}
 
 document.querySelectorAll("#navbar a").forEach((link) => {
   link.addEventListener("click", () => {
@@ -26,6 +21,33 @@ const oracoes = [
   "Pai celestial, guia-me para fazer escolhas corretas hoje, mesmo quando for difícil. Que eu possa refletir o Teu amor. 💖",
   "Deus, obrigado pela natureza tão linda que criaste. Ensina-me a cuidar do nosso planeta e de todos os seres vivos. 🌍",
   "Jesus, ajuda-me a ser corajoso como Davi e a confiar em Ti em todas as situações. Obrigado por me amar sempre! ✨",
+];
+
+// Versículos de reserva caso a API esteja indisponível
+const versiculosOffline = [
+  {
+    texto: "Porque Deus amou o mundo de tal maneira que deu o seu Filho unigênito",
+    referencia: "João 3:16",
+  },
+  {
+    texto: "O Senhor é meu pastor; nada me faltará",
+    referencia: "Salmos 23:1",
+  },
+  {
+    texto: "Tudo posso naquele que me fortalece",
+    referencia: "Filipenses 4:13",
+  },
+  {
+    texto: "Ensina a criança no caminho em que deve andar",
+    referencia: "Provérbios 22:6",
+  },
+];
+
+// IDs de vídeos do canal LionUp para exibir aleatoriamente
+const lionUpVideos = [
+  "s1ldFjCZx5w",
+  "Hj1CczOCnG4",
+  "dQw4w9WgXcQ",
 ];
 
 function toggleMenu() {
@@ -57,17 +79,6 @@ function gerarOracao() {
   document.getElementById("texto-oracao").textContent = oracoes[indice];
 }
 
-function compartilharVersiculoWhatsApp() {
-  const texto =
-    document.querySelector(".texto-versiculo")?.textContent ||
-    "Versículo inspirador da Bíblia";
-  const referencia =
-    document.querySelector(".referencia-versiculo")?.textContent || "";
-  const mensagem = `${texto} ${referencia} - Veja mais em ${window.location.href}`;
-  window.open(
-    `https://api.whatsapp.com/send?text=${encodeURIComponent(mensagem)}`
-  );
-}
 
 // Gerar oração automática ao carregar a página + a cada 24h
 function atualizarOracaoDiaria() {
@@ -103,11 +114,14 @@ async function carregarVersiculoDoDia() {
           <p class="referencia-versiculo">— ${referencia}</p>
       `;
   } catch (erro) {
-    // Passo 5: Tratar erros
+    // Passo 5: Tratar erros com versículo local
     console.error("Falha ao carregar versículo:", erro);
+    const indice = Math.floor(Math.random() * versiculosOffline.length);
+    const versiculo = versiculosOffline[indice];
     versiculoElemento.innerHTML = `
-          <p class="erro">😕 Não foi possível carregar o versículo hoje.</p>
-          <button onclick="carregarVersiculoDoDia()">Tentar novamente</button>
+          <p class="texto-versiculo">"${versiculo.texto}"</p>
+          <p class="referencia-versiculo">— ${versiculo.referencia}</p>
+          <p class="aviso-versiculo">Versículo offline</p>
       `;
   }
 }
@@ -127,7 +141,8 @@ function compartilharVersiculo() {
       text: mensagem,
     });
   } else {
-    alert("Copie para compartilhar:\n" + mensagem);
+    const url = `https://wa.me/?text=${encodeURIComponent(mensagem)}`;
+    window.open(url, "_blank");
   }
 }
 
@@ -181,7 +196,8 @@ function compartilharHistoria(titulo) {
       text: mensagem,
     });
   } else {
-    prompt("Copie o link para compartilhar:", mensagem);
+    const url = `https://wa.me/?text=${encodeURIComponent(mensagem)}`;
+    window.open(url, "_blank");
   }
 }
 
@@ -197,8 +213,17 @@ function verificarRespostaJogo(resposta) {
   }
 }
 
+// Escolhe aleatoriamente um vídeo do canal LionUp
+function carregarLionUpVideo() {
+  const iframe = document.querySelector(".lionup-videos iframe");
+  if (!iframe) return;
+  const indice = Math.floor(Math.random() * lionUpVideos.length);
+  iframe.src = `https://www.youtube-nocookie.com/embed/${lionUpVideos[indice]}`;
+}
+
 // Iniciar ao carregar a página
 document.addEventListener("DOMContentLoaded", () => {
   carregarVersiculoDoDia(); // Carrega o versículo do dia
   atualizarOracaoDiaria(); // Carrega a oração do dia
+  carregarLionUpVideo(); // Insere vídeo do canal
 });
