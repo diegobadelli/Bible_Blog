@@ -284,6 +284,14 @@ h2 {
   max-width: 800px;
   margin: 2rem auto;
 }
+.texto-versiculo,
+.referencia-versiculo {
+  margin-bottom: 0.5rem;
+}
+.aviso-versiculo {
+  font-size: 0.85rem;
+  color: #555;
+}
 
 /* Histórias em Destaque */
 .grid-historias {

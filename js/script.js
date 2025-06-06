@@ -23,6 +23,33 @@ const oracoes = [
   "Jesus, ajuda-me a ser corajoso como Davi e a confiar em Ti em todas as situações. Obrigado por me amar sempre! ✨",
 ];
 
+// Versículos de reserva caso a API esteja indisponível
+const versiculosOffline = [
+  {
+    texto: "Porque Deus amou o mundo de tal maneira que deu o seu Filho unigênito",
+    referencia: "João 3:16",
+  },
+  {
+    texto: "O Senhor é meu pastor; nada me faltará",
+    referencia: "Salmos 23:1",
+  },
+  {
+    texto: "Tudo posso naquele que me fortalece",
+    referencia: "Filipenses 4:13",
+  },
+  {
+    texto: "Ensina a criança no caminho em que deve andar",
+    referencia: "Provérbios 22:6",
+  },
+];
+
+// IDs de vídeos do canal LionUp para exibir aleatoriamente
+const lionUpVideos = [
+  "s1ldFjCZx5w",
+  "Hj1CczOCnG4",
+  "dQw4w9WgXcQ",
+];
+
 function toggleMenu() {
   var navbar = document.getElementById("navbar");
   navbar.classList.toggle("active");
@@ -87,11 +114,14 @@ async function carregarVersiculoDoDia() {
           <p class="referencia-versiculo">— ${referencia}</p>
       `;
   } catch (erro) {
-    // Passo 5: Tratar erros
+    // Passo 5: Tratar erros com versículo local
     console.error("Falha ao carregar versículo:", erro);
+    const indice = Math.floor(Math.random() * versiculosOffline.length);
+    const versiculo = versiculosOffline[indice];
     versiculoElemento.innerHTML = `
-          <p class="erro">😕 Não foi possível carregar o versículo hoje.</p>
-          <button onclick="carregarVersiculoDoDia()">Tentar novamente</button>
+          <p class="texto-versiculo">"${versiculo.texto}"</p>
+          <p class="referencia-versiculo">— ${versiculo.referencia}</p>
+          <p class="aviso-versiculo">Versículo offline</p>
       `;
   }
 }
@@ -183,8 +213,17 @@ function verificarRespostaJogo(resposta) {
   }
 }
 
+// Escolhe aleatoriamente um vídeo do canal LionUp
+function carregarLionUpVideo() {
+  const iframe = document.querySelector(".lionup-videos iframe");
+  if (!iframe) return;
+  const indice = Math.floor(Math.random() * lionUpVideos.length);
+  iframe.src = `https://www.youtube-nocookie.com/embed/${lionUpVideos[indice]}`;
+}
+
 // Iniciar ao carregar a página
 document.addEventListener("DOMContentLoaded", () => {
   carregarVersiculoDoDia(); // Carrega o versículo do dia
   atualizarOracaoDiaria(); // Carrega a oração do dia
+  carregarLionUpVideo(); // Insere vídeo do canal
 });

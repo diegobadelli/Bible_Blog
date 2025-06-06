@@ -3,6 +3,9 @@
 Um site educativo com histórias bíblicas para crianças, apresentado de forma acessível e interativa.
 Agora também traz vídeos do canal [LionUp](https://www.youtube.com/@LionUp) para complementar o aprendizado.
 
+Se a conexão falhar, o versículo do dia é exibido a partir de uma lista local de passagens.
+
+
 ## 🚀 Tecnologias Utilizadas
 
 - **HTML, CSS, JavaScript** – Estrutura e interatividade do site.
